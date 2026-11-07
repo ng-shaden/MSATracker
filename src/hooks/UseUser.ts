@@ -21,11 +21,10 @@ export function useUpdateUser() {
 }
 
 export function useDeleteUser() {
-    const {user} = UserAuth();
     const queryClient = useQueryClient();
 
     const {mutateAsync, isPending} = useMutation({
-        mutationFn: () => deleteUser(user!.userId),
+        mutationFn: () => deleteUser(),
         onSuccess: () => {
             queryClient.clear();
         },

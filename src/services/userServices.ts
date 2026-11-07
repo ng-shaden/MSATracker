@@ -62,11 +62,7 @@ export async function isUsernameTaken(username: string): Promise<boolean> {
     return data;
 }
 
-export async function deleteUser(userId: string) {
-    const { error } = await supabase
-        .from("users")
-        .update({ deleted_at: new Date().toISOString() })
-        .eq("user_id", userId);
-
+export async function deleteUser() {
+    const {error} = await supabase.rpc("delete_my_account");
     if (error) throw error;
 }

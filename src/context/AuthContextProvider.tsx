@@ -8,15 +8,9 @@ interface UserContextProviderProps {
     children: ReactNode;
 }
 
-export const AuthContextProvider = ({
-                                        children,
-                                    }: UserContextProviderProps) => {
-    const [supabaseUser, setSupabaseUser] = useState<
-        SupabaseUser | undefined
-    >(undefined);
-
+export const AuthContextProvider = ({children,}: UserContextProviderProps) => {
+    const [supabaseUser, setSupabaseUser] = useState<SupabaseUser | undefined>(undefined);
     const [user, setUser] = useState<User | undefined>(undefined);
-
     const [sessionLoading, setSessionLoading] = useState(true);
     const [profileLoading, setProfileLoading] = useState(true);
 
@@ -87,6 +81,7 @@ export const AuthContextProvider = ({
                 if (!data) {
                     console.error("No public profile found for this user.");
                     setUser(undefined);
+                    await supabase.auth.signOut({scope: "local"});
                     return;
                 }
 

@@ -6,6 +6,7 @@ import {AuthForm} from "../components/auth/AuthForm.tsx";
 import {Alert, Snackbar, Typography} from "@mui/material";
 import Slide, {type SlideProps} from '@mui/material/Slide';
 import CheckIcon from "@mui/icons-material/Check";
+import type {AuthError} from "@supabase/supabase-js";
 
 export function LoginPage() {
     const [email, setEmail] = useState("");
@@ -18,10 +19,16 @@ export function LoginPage() {
         location.state?.signupSuccess === true
     );
 
+    const isBanned = (error as AuthError | null)?.code === "user_banned";
+
+    const errorMessage = isBanned ? "This account has been deleted. Please contact support." : error?.message;
+
     async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
-        await login({email, password});
-        navigate("/home", {replace: true});
+        login(
+            {email, password},
+            {onSuccess: () => navigate("/home", {replace: true})},
+        );
     }
 
     function SlideTransition(props: SlideProps) {
@@ -41,7 +48,7 @@ export function LoginPage() {
                 onPasswordChange={setPassword}
                 onSubmit={handleSubmit}
                 isLoading={isLoggingIn}
-                error={error?.message}
+                error={errorMessage}
                 footerText="Don't have an account?"
                 footerLinkText="Sign up"
                 footerLinkTo="/signup"
@@ -79,7 +86,8 @@ export function LoginPage() {
                         }
                     }}
                 >
-                    <Typography variant={"subtitle1"} lineHeight={{xs: 1.1, sm: "auto"}} mb={{xs: 1, sm: 0.5}} fontWeight={600}>Account created successfully!</Typography>
+                    <Typography variant={"subtitle1"} lineHeight={{xs: 1.1, sm: "auto"}} mb={{xs: 1, sm: 0.5}}
+                                fontWeight={600}>Account created successfully!</Typography>
                     <Typography variant="body2" color="text.secondary" lineHeight={{xs: "auto", sm: 1.1}}>
                         Check your inbox to confirm your email address.
                     </Typography>

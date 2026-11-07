@@ -3,15 +3,12 @@ import {logInWithEmail, logOut, signUpNewUser} from "../services/authServices.ts
 import {isUsernameTaken} from "../services/userServices.ts";
 
 export function useLogIn() {
-    const {mutateAsync, isPending: isLoggingIn, error} = useMutation({
-        mutationFn: ({email, password,}: {
-            email: string;
-            password: string;
-        }) => logInWithEmail(email, password),
+    const {mutate, isPending: isLoggingIn, error} = useMutation({
+        mutationFn: ({email, password}: { email: string; password: string; }) => logInWithEmail(email, password),
     });
 
     return {
-        login: mutateAsync,
+        login: mutate,
         isLoggingIn,
         error,
     };
