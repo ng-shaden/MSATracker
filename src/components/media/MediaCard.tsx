@@ -37,6 +37,7 @@ export function MediaCard({media, userMediaStatus}: MediaCardProps) {
             <CardActionArea
                 onClick={() => navigate(`/${isMovie ? "movie" : "series"}/${media.id}`)}>
                 <CardMedia
+                    loading={"lazy"}
                     component="img"
                     image={poster}
                     alt={title ?? "Unknown title"}

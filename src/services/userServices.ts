@@ -61,3 +61,12 @@ export async function isUsernameTaken(username: string): Promise<boolean> {
 
     return data;
 }
+
+export async function deleteUser(userId: string) {
+    const { error } = await supabase
+        .from("users")
+        .update({ deleted_at: new Date().toISOString() })
+        .eq("user_id", userId);
+
+    if (error) throw error;
+}
