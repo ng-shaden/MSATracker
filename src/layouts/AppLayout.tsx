@@ -31,7 +31,6 @@ export default function AppLayout() {
                             : `${collapsedDrawerWidth}px`,
                     },
                     pt: `${topBarHeight}px`,
-                    // pb: 10, TODO
                     transition: "margin-left 0.2s",
                 }}
             >

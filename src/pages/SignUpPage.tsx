@@ -43,7 +43,7 @@ export function SignUpPage() {
     }
 
     return (
-        <AuthLayout>
+        <AuthLayout my={{xs: 8, md: 0}}>
             <AuthForm
                 title="Create your"
                 subtitle="Join msatracker and start building your library."

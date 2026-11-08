@@ -3,17 +3,17 @@ import type {ReactNode} from "react";
 
 interface AuthLayoutProps {
     children: ReactNode;
+    my?: number | {xs?: number; sm?: number; md?: number; lg?: number; xl?: number};
 }
 
-export function AuthLayout({children}: AuthLayoutProps) {
+export function AuthLayout({children, my = 0}: AuthLayoutProps) {
     return (
-        <Stack direction={{xs: "column", md: "row"}} sx={{minHeight: "100dvh"}}>
+        <Stack direction={{xs: "column", md: "row"}} sx={{minHeight: "100dvh"}} my={my}>
             <Box
                 sx={{
                     display: {xs: "none", md: "flex"},
-                    position: "absolute",
+                    position: "sticky",
                     top: 0,
-                    left: 0,
                     width: {md: "60%"},
                     height: "100dvh",
                     alignItems: "center",
@@ -30,7 +30,8 @@ export function AuthLayout({children}: AuthLayoutProps) {
                        height={"100%"}
                        spacing={3}
                 >
-                    <Typography variant="body2" color="secondary" fontWeight={600} pl={1} textTransform={"uppercase"} letterSpacing={"0.1em"}>
+                    <Typography variant="body2" color="secondary" fontWeight={600} pl={1} textTransform={"uppercase"}
+                                letterSpacing={"0.1em"}>
                         All your favorites, organized
                     </Typography>
                     <Typography variant="h1" fontWeight={600} letterSpacing={{md: 0, lg: "-0.1em"}} lineHeight={0.9}>
@@ -70,7 +71,6 @@ export function AuthLayout({children}: AuthLayoutProps) {
             </Box>
             <Box
                 p={{xs: 3}}
-                ml={{xs: 0, md: "60%"}}
                 width={{xs: "100%", md: "40%"}}
                 minHeight={"100dvh"}
                 display={"flex"}
