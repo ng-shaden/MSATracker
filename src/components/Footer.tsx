@@ -22,7 +22,7 @@ export function Footer({brandName}: FooterProps) {
                                  color={"textSecondary"}>Privacy Policy</MuiLink>
                         <MuiLink component={RouterLink} to={"cookie-policy"} underline={"none"} variant={"caption"}
                                  color={"textSecondary"}>Cookie Policy</MuiLink>
-                        <MuiLink component={RouterLink} to={""} underline={"none"} variant={"caption"}
+                        <MuiLink component={RouterLink} to={"terms-and-conditions"} underline={"none"} variant={"caption"}
                                  color={"textSecondary"}>Terms & Conditions</MuiLink>
                         <MuiLink component={RouterLink} to={""} underline={"none"} variant={"caption"}
                                  color={"textSecondary"}>Legal Notice</MuiLink>
