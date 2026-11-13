@@ -1,4 +1,5 @@
 import {Box, Divider, Stack, Typography, Link as MuiLink,} from "@mui/material";
+import {Link as RouterLink} from "react-router";
 
 export function TermsAndConditionsPage() {
     return (
@@ -53,43 +54,34 @@ export function TermsAndConditionsPage() {
 
                     <Typography variant="body1" color="text.secondary">
                         MSATracker is a platform designed to help users organise
-                        and track movies, television series and anime.
+                        and track movies, television series and anime. The Service allows users to:
                     </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                        The Service allows users to
-                    </Typography>
+                    <Stack>
+                        <Typography variant="body1" color="text.secondary">
+                            - Search for movies, series and anime.
+                        </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                        - Search for movies, series and anime.
-                    </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Create and manage personal watchlists.
+                        </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                        - Create and manage personal watchlists.
-                    </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Track viewing progress and completed titles.
+                        </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                        - Track viewing progress and completed titles.
-                    </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Save and manage personal media-related preferences.
+                        </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                        - Save and manage personal media-related preferences.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        - Access other features made available through the platform.
-                    </Typography>
-
+                        <Typography variant="body1" color="text.secondary">
+                            - Access other features made available through the platform.
+                        </Typography>
+                    </Stack>
                     <Typography variant="body1" color="text.secondary">
                         MSATracker is not a streaming service. We do not host,
                         distribute or provide movies, television episodes or
                         anime for streaming or downloading.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        Media information and images may be provided by
-                        third-party services, including The Movie Database
-                        (TMDB).
                     </Typography>
                 </Stack>
 
@@ -122,17 +114,13 @@ export function TermsAndConditionsPage() {
                     <Typography variant="body1" color="text.secondary">
                         You are responsible for keeping your account credentials
                         confidential and for notifying us if you become aware of
-                        unauthorised access to your account.
+                        unauthorised access to your account. You are responsible for activity carried out through
+                        your account, to the extent permitted by applicable law.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
                         You must not impersonate another person or create an
                         account using misleading information.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        You are responsible for activity carried out through
-                        your account, to the extent permitted by applicable law.
                     </Typography>
                 </Stack>
 
@@ -222,10 +210,10 @@ export function TermsAndConditionsPage() {
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        MSATracker may rely on third-party services and providers
+                        MSATracker relies on third-party services and providers
                         to operate certain features, including {" "}
                         <MuiLink
-                            href="https://www.themoviedb.org/privacy-policy"
+                            href="https://www.themoviedb.org"
                             target="_blank"
                             rel="noopener noreferrer"
                             underline="hover"
@@ -259,11 +247,7 @@ export function TermsAndConditionsPage() {
                         We aim to keep MSATracker available and functioning
                         properly. However, we do not guarantee that the Service
                         will always be available, uninterrupted, secure or free
-                        from errors.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        The Service may occasionally be unavailable due to
+                        from errors. The Service may occasionally be unavailable due to
                         maintenance, updates, technical problems or circumstances
                         outside our control.
                     </Typography>
@@ -324,7 +308,15 @@ export function TermsAndConditionsPage() {
 
                     <Typography variant="body1" color="text.secondary">
                         Further information about account deletion and personal
-                        data retention is available in our Privacy Policy.
+                        data retention is available in our {" "}
+                        <MuiLink
+                            component={RouterLink}
+                            to="/contact"
+                            underline="hover"
+                            color="secondary"
+                        >
+                            Privacy Policy.
+                        </MuiLink>
                     </Typography>
                 </Stack>
 
@@ -369,11 +361,7 @@ export function TermsAndConditionsPage() {
                         Nothing in these Terms & Conditions excludes or limits
                         liability where such exclusion or limitation is
                         prohibited by law, including liability that cannot
-                        legally be excluded.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        Nothing in this section affects your mandatory
+                        legally be excluded. Nothing in this section affects your mandatory
                         statutory rights as a consumer.
                     </Typography>
                 </Stack>
@@ -397,7 +385,16 @@ export function TermsAndConditionsPage() {
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        Please read our Privacy Policy for further information
+                        Please read our {" "}
+                        <MuiLink
+                            component={RouterLink}
+                            to="/contact"
+                            underline="hover"
+                            color="secondary"
+                        >
+                            Privacy Policy
+                        </MuiLink>
+                        {" "} for further information
                         about how we handle your personal data.
                     </Typography>
                 </Stack>
@@ -458,20 +455,28 @@ export function TermsAndConditionsPage() {
                     <Typography variant="body1" color="text.secondary">
                         If you have questions about these Terms & Conditions
                         or need to contact us regarding a legal matter,
-                        you can reach us through our Contact page.
+                        you can reach us through our {" "}
+                        <MuiLink
+                            component={RouterLink}
+                            to="/contact"
+                            underline="hover"
+                            color="secondary"
+                        >
+                            Contact page
+                        </MuiLink>.
                     </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                        Operator: [Your full legal name or business name]
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        Country: Belgium
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        Email: ng.shaden@gmail.com
-                    </Typography>
+                    <Stack>
+                        <Typography variant="body1" color="text.secondary">
+                            Operator: [Your full legal name or business name]
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            Country: Belgium
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            Email: ng.shaden@gmail.com
+                        </Typography>
+                    </Stack>
                 </Stack>
             </Stack>
         </Stack>
