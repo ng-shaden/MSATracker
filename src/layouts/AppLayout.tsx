@@ -26,9 +26,7 @@ export default function AppLayout() {
                 sx={{
                     pl: {
                         xs: 5,
-                        md: open
-                            ? `${drawerWidth}px`
-                            : `${collapsedDrawerWidth}px`,
+                        md: open ? `${drawerWidth}px` : `${collapsedDrawerWidth}px`,
                     },
                     pt: `${topBarHeight}px`,
                     transition: "margin-left 0.2s",
@@ -37,7 +35,7 @@ export default function AppLayout() {
                 <Outlet/>
             </Box>
 
-            <Footer brandName={"msatracker"}/>
+            <Footer brandName={"msatracker"} sideMenuOpen={open}/>
         </>
     );
 }

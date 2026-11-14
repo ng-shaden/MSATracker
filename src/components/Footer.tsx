@@ -1,15 +1,25 @@
 import {Box, Divider, Link as MuiLink, Stack, Typography} from "@mui/material";
 import {Link as RouterLink} from "react-router";
+import {collapsedDrawerWidth, drawerWidth} from "./layoutConstants.ts";
 
 interface FooterProps {
     brandName: string;
+    sideMenuOpen?: boolean;
 }
 
-export function Footer({brandName}: FooterProps) {
+export function Footer({brandName, sideMenuOpen}: FooterProps) {
     return (
-        <>
+        <Box
+            sx={{
+                ml: {
+                    xs: 0,
+                    md: sideMenuOpen ? `${drawerWidth - collapsedDrawerWidth}px` : 0,
+                },
+                transition: "margin-left 0.2s",
+            }}
+        >
             <Divider/>
-            <Box px={{xs: 10}} py={{xs: 3}} bgcolor={"background.paper"}>
+            <Box px={{xs: 10}} py={{xs: 3}} bgcolor={"background.paper"} >
                 <Stack direction={{xs: "column", md: "row"}} justifyContent={"space-between"} alignItems="center"
                        spacing={{xs: 5, sm: 3}}>
                     <Typography variant={"caption"} color={"textSecondary"}>© 2026 {brandName}. All rights reserved.</Typography>
@@ -29,6 +39,6 @@ export function Footer({brandName}: FooterProps) {
                     </Stack>
                 </Stack>
             </Box>
-        </>
+        </Box>
     )
 }
