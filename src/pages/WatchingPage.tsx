@@ -24,12 +24,33 @@ export function WatchingPage() {
     };
 
     return (
-        <Box my={{xs: 10}} ml={{xs: 0, md: 8}} mr={{xs: 5, sm: 8}}>
-            <PageHeader overline={"Midway Through"} title={"Currently"} titleSuffix={"Watching."}
-                        subtitle={"All the movies and series you're watching."} trailingText={filteredMedia.length ? filteredMedia.length.toString() : ""} trailingIcon={OndemandVideoOutlinedIcon}/>
+        <Box my={{xs: 10}} ml={{xs: 0, md: 8}} mr={{xs: 5, sm: 8}}
+             minHeight={"calc(100vh - 240px)"}
+             display={"flex"}
+             flexDirection={"column"}
+        >
+            <PageHeader
+                overline={"Midway Through"}
+                title={"Currently"}
+                titleSuffix={"Watching."}
+                subtitle={"All the movies and series you're watching."}
+                trailingText={filteredMedia.length ? filteredMedia.length.toString() : ""}
+                trailingIcon={OndemandVideoOutlinedIcon}
+            />
 
-            <MediaCollection media={mediaDetails} userMedia={userMedia} mediaTypeFilter={mediaTypeFilter}
-                             onFilterChange={handleChange} filteredMedia={filteredMedia}/>
+            <MediaCollection
+                media={mediaDetails}
+                userMedia={userMedia}
+                mediaTypeFilter={mediaTypeFilter}
+                onFilterChange={handleChange}
+                filteredMedia={filteredMedia}
+                icon={OndemandVideoOutlinedIcon}
+                emptyState={{
+                    overline: "Nothing in progress",
+                    title: "You're not watching anything",
+                    text: "Add movies or series to keep track of what you're currently watching.",
+                }}
+            />
         </Box>
     )
 }

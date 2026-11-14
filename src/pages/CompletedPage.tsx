@@ -23,12 +23,33 @@ export function CompletedPage() {
     };
 
     return (
-        <Box my={{xs: 10}} ml={{xs: 0, md: 8}} mr={{xs: 5, sm: 8}}>
-            <PageHeader overline="Already Watched" title="Your" titleSuffix="Collection."
-                        subtitle="Look how far you've come." trailingText={filteredMedia.length ? filteredMedia.length.toString() : ""} trailingIcon={CheckOutlinedIcon}/>
+        <Box my={{xs: 10}} ml={{xs: 0, md: 8}} mr={{xs: 5, sm: 8}}
+             minHeight={"calc(100vh - 240px)"}
+             display={"flex"}
+             flexDirection={"column"}
+        >
+            <PageHeader
+                overline="Already Watched"
+                title="Your"
+                titleSuffix="Collection."
+                subtitle="Look how far you've come."
+                trailingText={filteredMedia.length ? filteredMedia.length.toString() : ""}
+                trailingIcon={CheckOutlinedIcon}
+            />
 
-            <MediaCollection media={mediaDetails} userMedia={userMedia} mediaTypeFilter={mediaTypeFilter}
-                             onFilterChange={handleChange} filteredMedia={filteredMedia}/>
+            <MediaCollection
+                media={mediaDetails}
+                userMedia={userMedia}
+                mediaTypeFilter={mediaTypeFilter}
+                onFilterChange={handleChange}
+                filteredMedia={filteredMedia}
+                icon={CheckOutlinedIcon}
+                emptyState={{
+                    overline: "Nothing completed yet",
+                    title: "You haven't watched anything so far.",
+                    text: "Mark movies or series as completed to keep track of everything you've watched.",
+                }}
+            />
         </Box>
     );
 }

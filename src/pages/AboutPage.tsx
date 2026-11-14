@@ -1,7 +1,7 @@
 import {Box, Button, Divider, Link as MuiLink, Stack, Typography} from "@mui/material";
 import {Link as RouterLink} from "react-router"
 import {ImageBanner} from "../components/ImageBanner.tsx";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 import {GITHUB_URL, LINKEDIN_URL, PAYPAL_DONATE_LINK} from "../utils/utils.ts";
 
 export function AboutPage() {
@@ -177,7 +177,7 @@ export function AboutPage() {
                 </Box>
                 <Stack alignItems={"center"} spacing={2} pb={{xs: 10, md: 0}}>
                     <Button component={RouterLink} to="/signup" variant={"contained"} color="secondary"
-                            endIcon={<ArrowForwardIcon/>} sx={{borderRadius: 2, whiteSpace: "nowrap",}}>
+                            endIcon={<ArrowRightAltOutlinedIcon/>} sx={{borderRadius: 2, whiteSpace: "nowrap",}}>
                         Create your account
                     </Button>
                     <Typography variant={"body2"} color={"textSecondary"}>
