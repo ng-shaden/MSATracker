@@ -33,12 +33,9 @@ export function MediaCollection({
                                 }: MediaCollectionProps) {
     return (
         <Stack mt={10} gap={3} sx={{flex: 1}}>
-            <ToggleButtonGroup
-                value={mediaTypeFilter}
-                exclusive
-                onChange={onFilterChange}
-                aria-label="Media type filter"
+            <Box
                 sx={{
+                    position: "relative",
                     width: {xs: "100%", sm: 300},
                     p: 0.5,
                     gap: 0.5,
@@ -46,33 +43,62 @@ export function MediaCollection({
                     border: "1px solid",
                     borderColor: "divider",
                     borderRadius: 2,
-
-                    "& .MuiToggleButtonGroup-grouped": {
-                        border: 0,
-                        borderRadius: 2,
-                        width: "100%",
-                        color: "text.secondary",
-                        fontSize: "0.8rem",
-                        textTransform: "none",
-                        transition: "background-color 500ms ease, color 500ms ease, border-color 1000ms ease",
-
-                        "&.Mui-selected": {
-                            bgcolor: "#211819",
-                            color: "secondary.main",
-                            border: "1px solid",
-                            borderColor: "secondary.dark",
-
-                            "&:hover": {
-                                bgcolor: "#2a1c1d",
-                            },
-                        },
-                    },
                 }}
             >
-                <ToggleButton value="all">All</ToggleButton>
-                <ToggleButton value="movie">Movies</ToggleButton>
-                <ToggleButton value="series">Series</ToggleButton>
-            </ToggleButtonGroup>
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: 4,
+                        bottom: 4,
+                        left: 4,
+                        width: "calc((100% - 16px) / 3)",
+                        bgcolor: "#211819",
+                        border: "1px solid",
+                        borderColor: "secondary.dark",
+                        borderRadius: 2,
+                        pointerEvents: "none",
+                        transition: "transform 300ms ease",
+                        transform: `translateX(${
+                            mediaTypeFilter === "all"
+                                ? "0"
+                                : mediaTypeFilter === "movie"
+                                    ? "calc(100% + 4px)"
+                                    : "calc(200% + 8px)"
+                        })`,
+                    }}
+                />
+
+                <ToggleButtonGroup
+                    value={mediaTypeFilter}
+                    exclusive
+                    onChange={onFilterChange}
+                    aria-label="Media type filter"
+                    fullWidth
+                    sx={{
+                        position: "relative",
+
+                        "& .MuiToggleButtonGroup-grouped": {
+                            border: 0,
+                            borderRadius: 2,
+                            flex: 1,
+                            width: "100%",
+                            color: "text.secondary",
+                            fontSize: "0.8rem",
+                            textTransform: "none",
+                            transition: "background-color 500ms ease, color 500ms ease, border-color 1000ms ease",
+
+                            "&.Mui-selected": {
+                                bgcolor: "transparent",
+                                color: "secondary.main",
+                            },
+                        },
+                    }}
+                >
+                    <ToggleButton value="all">All</ToggleButton>
+                    <ToggleButton value="movie">Movies</ToggleButton>
+                    <ToggleButton value="series">Series</ToggleButton>
+                </ToggleButtonGroup>
+            </Box>
 
             {userMedia.length === 0 ? (
                 <UserMediaListEmptyState icon={Icon} {...emptyState}/>
