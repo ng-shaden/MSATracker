@@ -1,5 +1,6 @@
 import {Box, Divider, Stack, Typography, Link as MuiLink,} from "@mui/material";
 import {Link as RouterLink} from "react-router";
+import {CONTACT_EMAIL, OPERATOR_NAME} from "../utils/utils.ts";
 
 export function TermsAndConditionsPage() {
     return (
@@ -13,7 +14,21 @@ export function TermsAndConditionsPage() {
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">
-                    Last updated: 12 November 2026
+                    Last updated: 14 November 2026
+                </Typography>
+
+                <Typography variant="body1" color="text.secondary" maxWidth={850}>
+                    Welcome to MSATracker ("we", "us" or "our").
+                    These Terms & Conditions govern
+                    your access to and use of MSATracker, including its
+                    website, features and associated functionality (the "Service"). By creating an account or using the Service, you
+                    agree
+                    to these Terms & Conditions. If you do not agree with
+                    them, you should not use the Service.
+                </Typography>
+
+                <Typography variant="body1" color="text.secondary">
+                    MSATracker is operated by {OPERATOR_NAME}, based in Belgium.
                 </Typography>
             </Stack>
 
@@ -22,39 +37,15 @@ export function TermsAndConditionsPage() {
             <Stack spacing={5} maxWidth={900}>
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        1. Introduction
+                        1. Description of the Service
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        Welcome to MSATracker.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        These Terms & Conditions govern
-                        your access to and use of MSATracker, including its
-                        website, features and associated functionality.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        MSATracker is operated by [Your full legal name or
-                        business name], based in Belgium ("we", "us" or "our").
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        By creating an account or using the Service, you agree
-                        to these Terms & Conditions. If you do not agree with
-                        them, you should not use the Service.
-                    </Typography>
-                </Stack>
-
-                <Stack spacing={2}>
-                    <Typography variant="h5">
-                        2. Description of the Service
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        MSATracker is a platform designed to help users organise
-                        and track movies, television series and anime. The Service allows users to:
+                        MSATracker is a platform designed to help users organize
+                        and track movies, television series and anime. MSATracker is not a streaming service. We do not
+                        host,
+                        distribute or provide movies, television episodes or anime for streaming or downloading. The
+                        Service allows users to:
                     </Typography>
 
                     <Stack>
@@ -78,31 +69,24 @@ export function TermsAndConditionsPage() {
                             - Access other features made available through the platform.
                         </Typography>
                     </Stack>
+                </Stack>
+
+                <Stack spacing={2}>
+                    <Typography variant="h5">
+                        2. Eligibility
+                    </Typography>
+
                     <Typography variant="body1" color="text.secondary">
-                        MSATracker is not a streaming service. We do not host,
-                        distribute or provide movies, television episodes or
-                        anime for streaming or downloading.
+                        You must be at least 13 years old to use MSATracker. If you are
+                        under 18, you may use the Service only with the permission of a
+                        parent or legal guardian. You must not use the Service if doing so
+                        would violate applicable laws or regulations.
                     </Typography>
                 </Stack>
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        3. Eligibility
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        You must be legally capable of entering into these Terms
-                        & Conditions to use MSATracker. If you are under the age
-                        of majority applicable to you, parental or legal guardian
-                        consent may be required where applicable.
-                        You must not use the Service if doing so would violate
-                        applicable laws or regulations.
-                    </Typography>
-                </Stack>
-
-                <Stack spacing={2}>
-                    <Typography variant="h5">
-                        4. Account Registration and Security
+                        3. Account Registration and Security
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -114,7 +98,7 @@ export function TermsAndConditionsPage() {
                     <Typography variant="body1" color="text.secondary">
                         You are responsible for keeping your account credentials
                         confidential and for notifying us if you become aware of
-                        unauthorised access to your account. You are responsible for activity carried out through
+                        unauthorized access to your account. You are responsible for activity carried out through
                         your account, to the extent permitted by applicable law.
                     </Typography>
 
@@ -126,19 +110,19 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        5. Acceptable Use
+                        4. Acceptable Use
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
                         You agree to use MSATracker lawfully and responsibly.
                         You must not use the Service for unlawful purposes,
-                        attempt to gain unauthorised access to accounts or
+                        attempt to gain unauthorized access to accounts or
                         systems, interfere with its security or operation,
                         introduce malicious software, or exploit vulnerabilities.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        You must not scrape or collect data through unauthorised
+                        You must not scrape or collect data through unauthorized
                         automated means, bypass security measures, distribute
                         spam or harmful material, or use the Service in a way
                         that negatively affects other users.
@@ -152,7 +136,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        6. User-Submitted Content
+                        5. User-Submitted Content
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -163,7 +147,7 @@ export function TermsAndConditionsPage() {
                     <Typography variant="body1" color="text.secondary">
                         You retain ownership of content you submit, where
                         applicable. By submitting content, you grant us a
-                        limited, non-exclusive licence to store, process,
+                        limited, non-exclusive license to store, process,
                         display and use that content solely as necessary to
                         operate, maintain and provide the Service.
                     </Typography>
@@ -182,7 +166,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        7. Intellectual Property
+                        6. Intellectual Property
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -200,47 +184,70 @@ export function TermsAndConditionsPage() {
                     <Typography variant="body1" color="text.secondary">
                         Media titles, descriptions, posters and other third-party
                         materials remain the property of their respective owners
-                        and are subject to their own rights and licences.
+                        and are subject to their own rights and licenses.
                     </Typography>
                 </Stack>
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        8. Third-Party Services
+                        7. Third-Party Services
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        MSATracker relies on third-party services and providers
-                        to operate certain features, including {" "}
+                        MSATracker relies on third-party services to operate certain
+                        features, including{" "}
                         <MuiLink
                             href="https://www.themoviedb.org"
                             target="_blank"
                             rel="noopener noreferrer"
                             underline="hover"
-                            color={"secondary"}
+                            color="secondary"
                         >
                             The Movie Database (TMDB)
                         </MuiLink>
-                        {" "}
-                        for media information and images, and Supabase
-                        for authentication, database and infrastructure services.
+                        {" "}for media information and images, and Supabase for
+                        authentication, database and infrastructure services. These services
+                        are subject to their own terms, privacy policies and availability.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        Third-party services are subject to their own terms,
-                        privacy policies and availability. We do not control
-                        their independent operation, content or policies.
+                        This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved
+                        by TMDB.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        MSATracker is not endorsed, certified or approved by
-                        TMDB.
+                        For details on how these providers process personal data, see our{" "}
+                        <MuiLink
+                            component={RouterLink}
+                            to="/privacy-policy"
+                            underline="hover"
+                            color="secondary"
+                        >
+                            Privacy Policy
+                        </MuiLink>.
+                    </Typography>
+
+                    <Typography variant="subtitle1" fontWeight={600}>
+                        Voluntary Donations
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        MSATracker may offer an optional way to donate to support its
+                        development. Donations are entirely voluntary, do not give you any
+                        additional features, rights or priority access, and do not
+                        constitute a purchase of goods or services.
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        Donations are processed by PayPal under its own terms and privacy
+                        policy. Except where required by applicable law, donations are
+                        non-refundable.
                     </Typography>
                 </Stack>
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        9. Service Availability and Modifications
+                        8. Service Availability and Modifications
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -260,7 +267,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        10. Account Suspension and Termination
+                        9. Account Suspension, Termination and Deletion
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -278,51 +285,29 @@ export function TermsAndConditionsPage() {
 
                     <Typography variant="body1" color="text.secondary">
                         You may stop using MSATracker and request deletion of
-                        your account through the available account settings
-                        or by contacting us.
-                    </Typography>
-                </Stack>
-
-                <Stack spacing={2}>
-                    <Typography variant="h5">
-                        11. Account Deletion
+                        your account at any time through the available account
+                        settings or by contacting us. Deleted accounts enter a
+                        pending deletion period before permanent removal, during
+                        which you may request restoration by contacting us.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        When you request account deletion, your account enters
-                        a pending deletion period of 30 days.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        During this period, normal access to your account is
-                        restricted, and you may request account restoration
-                        by contacting us.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        If the 30-day period expires without restoration,
-                        your account and associated personal data will be
-                        permanently deleted, subject to any legal obligations
-                        requiring certain information to be retained.
-                    </Typography>
-
-                    <Typography variant="body1" color="text.secondary">
-                        Further information about account deletion and personal
-                        data retention is available in our {" "}
+                        Details about the deletion period and personal data
+                        retention are available in our{" "}
                         <MuiLink
                             component={RouterLink}
-                            to="/contact"
+                            to="/privacy-policy"
                             underline="hover"
                             color="secondary"
                         >
-                            Privacy Policy.
-                        </MuiLink>
+                            Privacy Policy
+                        </MuiLink>.
                     </Typography>
                 </Stack>
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        12. Disclaimers
+                        10. Disclaimers
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -348,7 +333,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        13. Limitation of Liability
+                        11. Limitation of Liability
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -368,7 +353,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        14. Privacy and Personal Data
+                        12. Privacy and Personal Data
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -388,7 +373,7 @@ export function TermsAndConditionsPage() {
                         Please read our {" "}
                         <MuiLink
                             component={RouterLink}
-                            to="/contact"
+                            to="/privacy-policy"
                             underline="hover"
                             color="secondary"
                         >
@@ -401,7 +386,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        15. Changes to These Terms
+                        13. Changes to These Terms
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -426,7 +411,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        16. Governing Law and Disputes
+                        14. Governing Law and Disputes
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -449,7 +434,7 @@ export function TermsAndConditionsPage() {
 
                 <Stack spacing={2}>
                     <Typography variant="h5">
-                        17. Contact
+                        15. Contact
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -468,13 +453,20 @@ export function TermsAndConditionsPage() {
 
                     <Stack>
                         <Typography variant="body1" color="text.secondary">
-                            Operator: [Your full legal name or business name]
+                            Operator: {OPERATOR_NAME}
                         </Typography>
                         <Typography variant="body1" color="text.secondary">
                             Country: Belgium
                         </Typography>
                         <Typography variant="body1" color="text.secondary">
-                            Email: ng.shaden@gmail.com
+                            Email: {" "}
+                            <MuiLink
+                                href={`mailto:${CONTACT_EMAIL}`}
+                                color="secondary"
+                                underline="hover"
+                            >
+                                {CONTACT_EMAIL}
+                            </MuiLink>.
                         </Typography>
                     </Stack>
                 </Stack>

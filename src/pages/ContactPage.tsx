@@ -1,6 +1,7 @@
-import {Box, Divider, Stack, Typography} from "@mui/material";
-import {Link as MuiLink} from "@mui/material";
+import {Box, Divider, Stack, Typography, Link as MuiLink} from "@mui/material";
 import {ContactFormFields} from "../components/ContactFormFields.tsx";
+import {GITHUB_URL, LINKEDIN_URL} from "../utils/utils.ts";
+import {Link as RouterLink} from "react-router"
 
 export function ContactPage() {
     return (
@@ -13,12 +14,12 @@ export function ContactPage() {
                     </Box>
                 </Typography>
                 <Typography variant="body1" color="text.secondary" maxWidth={800}>
-                    For general enquiries, feedback, technical support, or legal matters,
-                    please use the contact form below. All enquiries are welcome and will
+                    For general inquiries, feedback, technical support, or legal matters,
+                    please use the contact form below. All inquiries are welcome and will
                     be reviewed as soon as possible. Alternatively, you may also reach out
                     through my {" "}
                     <MuiLink
-                        href="https://www.linkedin.com/in/mark-ng-03980b1b1"
+                        href={LINKEDIN_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         color="secondary"
@@ -28,7 +29,7 @@ export function ContactPage() {
                     </MuiLink>
                     {" "}or{" "}
                     <MuiLink
-                        href="https://github.com/yvon-ng"
+                        href={GITHUB_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         color="secondary"
@@ -43,6 +44,13 @@ export function ContactPage() {
             <Divider/>
 
             <ContactFormFields/>
+
+            <Typography variant="body2" color="text.secondary">
+                Your details are used only to respond to your enquiry. See our{" "}
+                <MuiLink component={RouterLink} to="/privacy-policy" color="secondary" underline="hover">
+                    Privacy Policy
+                </MuiLink>.
+            </Typography>
         </Stack>
     )
 }

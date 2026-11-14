@@ -1,5 +1,6 @@
 import {Divider, Link as MuiLink, Stack, Typography, Box} from "@mui/material";
 import {Link as RouterLink} from "react-router";
+import {CONTACT_EMAIL, OPERATOR_NAME} from "../utils/utils.ts";
 
 export function PrivacyPolicyPage() {
     return (
@@ -13,7 +14,7 @@ export function PrivacyPolicyPage() {
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">
-                    Last updated: 4 November 2026
+                    Last updated: 14 November 2026
                 </Typography>
 
                 <Typography variant="body1" color="text.secondary" maxWidth={850}>
@@ -22,6 +23,12 @@ export function PrivacyPolicyPage() {
                     and what rights you have regarding your personal information. We are committed to respecting your
                     privacy and handling your information responsibly in accordance with applicable data protection
                     laws, including the GDPR.
+                </Typography>
+
+                <Typography variant="body1" color="text.secondary" maxWidth={850}>
+                    MSATracker is operated by {OPERATOR_NAME}, based in Belgium, who is
+                    the controller of your personal information for the purposes of the
+                    GDPR.
                 </Typography>
             </Stack>
 
@@ -102,12 +109,64 @@ export function PrivacyPolicyPage() {
                         1.3 Technical Information
                     </Typography>
 
+                    {/*TODO add hosting service*/}
                     <Typography variant="body1" color="text.secondary">
-                        When you access MSATracker, certain technical information
-                        may be processed by the application and its service
-                        providers. This may include information necessary to
-                        establish connections, authenticate users, and maintain
-                        the security and functionality of the service.
+                        When you access MSATracker, we and our service providers
+                        (including Supabase and our hosting provider) automatically
+                        process certain technical information, such as:
+                    </Typography>
+
+                    <Box>
+                        <Typography variant="body1" color="text.secondary">
+                            - IP address
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Browser type, device type and operating system
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Date and time of requests and the pages or resources requested
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Session and authentication data, such as login timestamps
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Error and security logs
+                        </Typography>
+                    </Box>
+
+                    <Typography variant="body1" color="text.secondary">
+                        This information is used to operate and secure the application,
+                        prevent abuse and troubleshoot problems. We do not use it for
+                        advertising or to track you across other websites.
+                    </Typography>
+
+                    <Typography variant="subtitle1" fontWeight={600}>
+                        1.4 Contact Form Information
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        When you contact us through the contact form, we collect the
+                        information you provide, such as:
+                    </Typography>
+
+                    <Box>
+                        <Typography variant="body1" color="text.secondary">
+                            - Your name
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - Your email address
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - The subject of your message
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - The content of your message
+                        </Typography>
+                    </Box>
+
+                    <Typography variant="body1" color="text.secondary">
+                        This information is used to respond to your inquiry and is
+                        retained as described in the Data Retention section below.
                     </Typography>
                 </Stack>
 
@@ -151,6 +210,30 @@ export function PrivacyPolicyPage() {
                         We do not intentionally use your personal information
                         for advertising purposes.
                     </Typography>
+
+                    <Typography variant="subtitle1" fontWeight={600}>
+                        2.1 Legal Bases for Processing
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        Under the GDPR, we rely on the following legal bases:
+                    </Typography>
+
+                    <Box>
+                        <Typography variant="body1" color="text.secondary">
+                            - <strong>Contract:</strong> To create and maintain your account
+                            and provide the media tracking features you request.
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - <strong>Legitimate interests:</strong> To keep the application
+                            secure, prevent abuse, maintain and improve the service, and
+                            respond to messages sent through the contact form.
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary">
+                            - <strong>Legal obligation:</strong> To retain certain information
+                            where required by law.
+                        </Typography>
+                    </Box>
                 </Stack>
 
                 <Stack spacing={2}>
@@ -165,13 +248,18 @@ export function PrivacyPolicyPage() {
                         privacy policies.
                     </Typography>
 
+                    <Typography variant="body1" color="text.secondary">
+                        We do not sell your personal information. Your information is shared
+                        only with the service providers listed below, as necessary to operate
+                        the application, or where required by law.
+                    </Typography>
+
                     <Typography variant="subtitle1" fontWeight={600}>
                         3.1 Supabase
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        MSATracker uses Supabase for authentication, database
-                        functionality, and account management.
+                        MSATracker uses Supabase, which acts as a processor on our behalf, for authentication, database functionality, and account management.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -212,6 +300,13 @@ export function PrivacyPolicyPage() {
                         and remain the property of their respective owners.
                     </Typography>
 
+                    <Typography variant="body1" color="text.secondary">
+                        TMDB is operated from the United States and handles the information
+                        it receives under its own privacy policy. When media information or
+                        images are requested from TMDB, it may receive technical information
+                        such as an IP address.
+                    </Typography>
+
                     <MuiLink
                         href="https://www.themoviedb.org/privacy-policy"
                         target="_blank"
@@ -222,6 +317,29 @@ export function PrivacyPolicyPage() {
                     >
                         TMDB Privacy Policy
                     </MuiLink>
+
+                    <Typography variant="subtitle1" fontWeight={600}>
+                        3.3 PayPal (Voluntary Donations)
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        MSATracker offers an optional donation link that redirects you to
+                        PayPal. Donations are processed entirely by PayPal under its own
+                        terms and privacy policy. We do not collect or store your payment
+                        details. Depending on the information you provide to PayPal, we may
+                        receive limited donation details, such as your name and the amount.
+                    </Typography>
+
+                    <MuiLink
+                        href="https://www.paypal.com/privacy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="secondary"
+                        underline="hover"
+                        sx={{alignSelf: "flex-start"}}
+                    >
+                        PayPal Privacy Policy
+                    </MuiLink>
                 </Stack>
 
                 <Stack spacing={2}>
@@ -231,7 +349,8 @@ export function PrivacyPolicyPage() {
 
                     <Typography variant="body1" color="text.secondary">
                         Your account information and media tracking data
-                        are stored using Supabase.
+                        are stored using Supabase on servers located in Ireland,
+                        within the European Economic Area.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -250,6 +369,32 @@ export function PrivacyPolicyPage() {
                         However, no method of electronic storage or transmission
                         over the internet can be guaranteed to be completely secure.
                     </Typography>
+
+                    <Typography variant="subtitle1" fontWeight={600}>
+                        4.1 International Transfers
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        Supabase may process personal information in countries outside the
+                        European Economic Area, such as Singapore and the United States, for
+                        example when providing support. Where this happens, we rely on the
+                        Standard Contractual Clauses incorporated in its{" "}
+                        <MuiLink
+                            href="https://supabase.com/legal/dpa"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            color="secondary"
+                            underline="hover"
+                        >
+                            Data Processing Addendum
+                        </MuiLink>.
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        TMDB is operated from the United States. Information that TMDB
+                        receives is handled under its own privacy policy, and we do not
+                        control where or how it processes that information.
+                    </Typography>
                 </Stack>
 
                 <Stack spacing={2}>
@@ -259,20 +404,36 @@ export function PrivacyPolicyPage() {
 
                     <Typography variant="body1" color="text.secondary">
                         We retain personal information for as long as necessary
-                        to provide the application's services and fulfil the
+                        to provide the application's services and fulfill the
                         purposes described in this Privacy Policy.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        If you choose to delete your account, your associated
-                        personal information and media tracking data will be
-                        handled in accordance with the applicable deletion
-                        process and legal requirements.
+                        If you choose to delete your account, it enters a pending deletion
+                        period of 30 days. During this period, normal access to your account
+                        is restricted, and you may request restoration by contacting us
+                        through our{" "}
+                        <MuiLink
+                            component={RouterLink}
+                            to="/contact"
+                            color="secondary"
+                            underline="hover"
+                        >
+                            Contact page
+                        </MuiLink>.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        Certain information may need to be retained where
-                        required by law or for legitimate security purposes.
+                        If the 30-day period expires without restoration, your account,
+                        associated personal information and media tracking data will be
+                        permanently deleted, subject to any legal obligations requiring
+                        certain information to be retained.
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        Messages sent through the contact form are retained for as long
+                        as necessary to handle your inquiry and for any follow-up
+                        required.
                     </Typography>
                 </Stack>
 
@@ -377,14 +538,13 @@ export function PrivacyPolicyPage() {
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        MSATracker is not specifically directed at children.
-                        We do not knowingly collect personal information
-                        from children in violation of applicable data
-                        protection laws.
+                        MSATracker is not directed at children under 13, and you must be at
+                        least 13 years old to create an account. We do not knowingly collect
+                        personal information from children under 13.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        If you believe that a child has provided personal
+                        If you believe that a child under 13 has provided personal
                         information inappropriately, please contact us so
                         that the matter can be reviewed.
                     </Typography>
@@ -424,6 +584,14 @@ export function PrivacyPolicyPage() {
                             underline="hover"
                         >
                             Contact page
+                        </MuiLink>
+                        {" "}or by email at{" "}
+                        <MuiLink
+                            href={`mailto:${CONTACT_EMAIL}`}
+                            color="secondary"
+                            underline="hover"
+                        >
+                            {CONTACT_EMAIL}
                         </MuiLink>.
                     </Typography>
                 </Stack>

@@ -6,5 +6,11 @@ export const staleTimes = {
     oneHour: 60 * MINUTE,
 };
 
+// CONSTANTS
 //TODO better no poster picture
 export const NO_POSTER_URL = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
+export const CONTACT_EMAIL = "ng.shaden@gmail.com";
+export const OPERATOR_NAME = "Shaden Ng";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/mark-ng-03980b1b1";
+export const GITHUB_URL = "https://github.com/yvon-ng";
+export const PAYPAL_DONATE_LINK = "https://www.paypal.com/donate/?hosted_button_id=AGGXQQ7QU9HPY";

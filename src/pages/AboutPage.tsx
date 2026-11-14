@@ -2,6 +2,7 @@ import {Box, Button, Divider, Link as MuiLink, Stack, Typography} from "@mui/mat
 import {Link as RouterLink} from "react-router"
 import {ImageBanner} from "../components/ImageBanner.tsx";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import {GITHUB_URL, LINKEDIN_URL, PAYPAL_DONATE_LINK} from "../utils/utils.ts";
 
 export function AboutPage() {
     return (
@@ -52,7 +53,7 @@ export function AboutPage() {
                         Developers interested in connecting or discussing the project are
                         welcome to reach out through my{" "}
                         <MuiLink
-                            href="https://www.linkedin.com/in/mark-ng-03980b1b1"
+                            href={LINKEDIN_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             color="secondary"
@@ -62,7 +63,7 @@ export function AboutPage() {
                         </MuiLink>
                         {" "}and{" "}
                         <MuiLink
-                            href="https://github.com/yvon-ng"
+                            href={GITHUB_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             color="secondary"
@@ -94,7 +95,7 @@ export function AboutPage() {
                 >
                     <Box
                         component="img"
-                        src="https://www.themoviedb.org/assets/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                        src="/TMDBLogo.svg"
                         alt="The Movie Database (TMDB) logo"
                         width={{xs: 250, sm: 300}}
                     />
@@ -107,8 +108,8 @@ export function AboutPage() {
                              underline="hover">TMDB (The Movie Database)</MuiLink>
                     {" "}API to provide movie
                     and TV series information, including titles, descriptions, posters, backdrops, genres, release
-                    dates, and more. This product uses TMDB and the TMDB API but is not endorsed, certified or otherwise
-                    approved by TMDB.
+                    dates, and more. This website uses TMDB and the TMDB APIs but is not endorsed, certified, or
+                    otherwise approved by TMDB.
                     Media information and images are provided by TMDB and remain the property of their respective
                     owners.
                 </Typography>
@@ -131,12 +132,12 @@ export function AboutPage() {
 
                 <Button
                     component="a"
-                    href="https://www.paypal.com/donate/?hosted_button_id=AGGXQQ7QU9HPY"
+                    href={PAYPAL_DONATE_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="outlined"
-                    startIcon={<Box component="img" src="https://www.paypalobjects.com/webstatic/icon/pp258.png"
-                                    alt="paypal logo" sx={{width: 20, height: 20}}/>}
+                    startIcon={<Box component="img" src="/paypalLogo.png" alt="paypal logo"
+                                    sx={{width: 20, height: 20}}/>}
                     sx={{
                         px: 3,
                         py: 1,
