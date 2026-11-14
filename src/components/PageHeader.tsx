@@ -1,4 +1,5 @@
-import {Stack, Typography} from "@mui/material";
+import {Divider, Stack, Typography} from "@mui/material";
+import type {ElementType} from "react";
 
 interface MessageOfTheDayProps {
     overline?: string
@@ -6,9 +7,10 @@ interface MessageOfTheDayProps {
     titleSuffix?: string
     subtitle?: string
     trailingText?: string;
+    trailingIcon?: ElementType;
 }
 
-export function PageHeader({overline, title, titleSuffix, subtitle, trailingText}: MessageOfTheDayProps) {
+export function PageHeader({overline, title, titleSuffix, subtitle, trailingText, trailingIcon: TrailingIcon}: MessageOfTheDayProps) {
     return (
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"}>
             <Stack>
@@ -30,9 +32,21 @@ export function PageHeader({overline, title, titleSuffix, subtitle, trailingText
                     {subtitle}
                 </Typography>
             </Stack>
-            <Typography fontSize={{xs: "2.5rem", sm: "3rem", md: "4rem"}} fontWeight={500} color={"secondary.main"} mr={8}>
-                {trailingText}
-            </Typography>
+            <Stack direction={"row"} alignItems={"center"} spacing={3} mr={8}>
+                <Divider orientation={"vertical"} flexItem/>
+                <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                    {TrailingIcon && (
+                        <TrailingIcon
+                            sx={{fontSize: {xs: "2.5rem", sm: "3rem", md: "4rem"}}}
+                            color={"secondary"}
+                        />
+                    )}
+                    <Typography fontSize={{xs: "2.5rem", sm: "3rem", md: "4rem"}} fontWeight={500}
+                                color={"secondary.main"}>
+                        {trailingText}
+                    </Typography>
+                </Stack>
+            </Stack>
         </Stack>
     )
 }

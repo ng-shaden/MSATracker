@@ -3,6 +3,7 @@ import {Box} from "@mui/material";
 import {PageHeader} from "../components/PageHeader.tsx";
 import {MediaCollection} from "../components/media/MediaCollection.tsx";
 import {type MouseEvent, useState} from "react";
+import OndemandVideoOutlinedIcon from "@mui/icons-material/OndemandVideoOutlined";
 
 export function WatchingPage() {
     const {userMedia} = useUserMediaList("currently_watching");
@@ -25,7 +26,7 @@ export function WatchingPage() {
     return (
         <Box my={{xs: 10}} ml={{xs: 0, md: 8}} mr={{xs: 5, sm: 8}}>
             <PageHeader overline={"Midway Through"} title={"Currently"} titleSuffix={"Watching."}
-                        subtitle={"All the movies and series you're watching."} trailingText={filteredMedia.length ? filteredMedia.length.toString() : ""}/>
+                        subtitle={"All the movies and series you're watching."} trailingText={filteredMedia.length ? filteredMedia.length.toString() : ""} trailingIcon={OndemandVideoOutlinedIcon}/>
 
             <MediaCollection media={mediaDetails} userMedia={userMedia} mediaTypeFilter={mediaTypeFilter}
                              onFilterChange={handleChange} filteredMedia={filteredMedia}/>
