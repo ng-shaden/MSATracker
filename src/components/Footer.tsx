@@ -24,8 +24,6 @@ export function Footer({brandName}: FooterProps) {
                                  color={"textSecondary"}>Cookie Policy</MuiLink>
                         <MuiLink component={RouterLink} to={"terms-and-conditions"} underline={"none"} variant={"caption"}
                                  color={"textSecondary"}>Terms & Conditions</MuiLink>
-                        <MuiLink component={RouterLink} to={""} underline={"none"} variant={"caption"}
-                                 color={"textSecondary"}>Legal Notice</MuiLink>
                         <MuiLink component={RouterLink} to={"contact"} underline={"none"} variant={"caption"}
                                  color={"textSecondary"}>Contact</MuiLink>
                     </Stack>

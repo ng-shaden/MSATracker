@@ -451,6 +451,7 @@ export function TermsAndConditionsPage() {
                         </MuiLink>.
                     </Typography>
 
+                    {/*TODO add address*/}
                     <Stack>
                         <Typography variant="body1" color="text.secondary">
                             Operator: {OPERATOR_NAME}
