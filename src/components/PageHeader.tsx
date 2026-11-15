@@ -32,8 +32,8 @@ export function PageHeader({overline, title, titleSuffix, subtitle, trailingText
                     {subtitle}
                 </Typography>
             </Stack>
-            <Stack direction={"row"} alignItems={"center"} spacing={3} mr={8}>
-                <Divider orientation={"vertical"} flexItem/>
+            <Stack direction={"row"} alignItems={"center"} spacing={3} mr={{xs: 0, md: 8}}>
+                <Divider orientation={"vertical"} flexItem sx={{display: {xs: "none", sm: "initial" }}}/>
                 <Stack direction={"row"} alignItems={"center"} spacing={1}>
                     {TrailingIcon && (
                         <TrailingIcon

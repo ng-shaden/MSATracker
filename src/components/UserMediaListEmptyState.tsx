@@ -14,7 +14,7 @@ export function UserMediaListEmptyState({icon: Icon, overline, title, text}: Use
     const theme = useTheme();
 
     return (
-        <Stack alignItems="center" justifyContent={"center"} spacing={3} border={"2px dashed"} borderRadius={3}
+        <Stack p={{xs: 5}} alignItems="center" justifyContent={"center"} spacing={3} border={"2px dashed"} borderRadius={3}
                borderColor={"divider"} flex={1}>
             <Box
                 sx={{

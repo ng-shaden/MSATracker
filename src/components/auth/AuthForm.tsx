@@ -137,19 +137,38 @@ export function AuthForm({
                 />
 
                 {showSignUpFields && (
-                    <TextField
-                        label="Confirm password"
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(event) =>
-                            onConfirmPasswordChange?.(event.target.value)
-                        }
-                        autoComplete="new-password"
-                        error={confirmPassword.length > 0 && password !== confirmPassword}
-                        helperText={confirmPassword.length > 0 && password !== confirmPassword ? "Passwords do not match" : ""}
-                        required
-                        fullWidth
-                    />
+                    <>
+                        <TextField
+                            label="Confirm password"
+                            type="password"
+                            value={confirmPassword}
+                            onChange={(event) =>
+                                onConfirmPasswordChange?.(event.target.value)
+                            }
+                            autoComplete="new-password"
+                            error={confirmPassword.length > 0 && password !== confirmPassword}
+                            helperText={confirmPassword.length > 0 && password !== confirmPassword ? "Passwords do not match" : ""}
+                            required
+                            fullWidth
+                        />
+
+                        <Typography variant={"caption"} color={"textDisabled"} textAlign={"center"}>By clicking sign up, you agree to our {" "}
+                            <MuiLink
+                                component={RouterLink}
+                                to={"/terms-and-conditions"}
+                                underline="none"
+                                sx={{
+                                    color: "secondary.main",
+                                    "&:hover": {
+                                        textDecoration: "underline",
+                                    },
+                                }}
+                            >
+                                Terms & Conditions
+                            </MuiLink>
+                            .
+                        </Typography>
+                    </>
                 )}
 
                 <Button
