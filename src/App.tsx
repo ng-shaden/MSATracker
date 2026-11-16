@@ -23,6 +23,7 @@ import {ContactPage} from "./pages/ContactPage.tsx";
 import {CookiePolicyPage} from "./pages/CookiePolicyPage.tsx";
 import {PrivacyPolicyPage} from "./pages/PrivacyPolicyPage.tsx";
 import {TermsAndConditionsPage} from "./pages/TermsAndConditionsPage.tsx";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 axios.defaults.baseURL = "http://localhost:3000";
 
@@ -50,7 +51,7 @@ function AppContent() {
     return (
         <>
             <Routes>
-                {/* Public routes */}
+                {/* Public pages */}
                 <Route element={<PublicLayout/>}>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path="/signup" element={<SignUpPage/>}/>
@@ -59,6 +60,7 @@ function AppContent() {
                     <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
                     <Route path="/contact" element={<ContactPage/>}/>
                     <Route path="/terms-and-conditions" element={<TermsAndConditionsPage/>}/>
+                    <Route path="*" element={<NotFoundPage/>}/>
                 </Route>
 
                 {/* Authenticated pages */}
@@ -76,7 +78,6 @@ function AppContent() {
                 </Route>
 
                 <Route path="/" element={<Navigate to="/home" replace/>}/>
-                <Route path="*" element={<Navigate to="/home" replace/>}/>
             </Routes>
         </>
     );
