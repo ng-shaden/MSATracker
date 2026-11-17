@@ -1,75 +1,109 @@
-# React + TypeScript + Vite
+# msatracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+msatracker started as a personal project of mine to solve a simple problem: keeping track of movies, TV series and anime
+I want
+to watch. What began as a personal solution grew into a hobby project and a way to explore web development.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Discover Media** – Search for movies and TV series using TMDB.
+- **Watchlist** – Keep track of movies and series you want to watch.
+- **Currently Watching** – Manage the media you're currently watching.
+- **Completed** – Keep a record of movies and series you've finished.
+- **Media Details** – Explore information about movies and series, including descriptions, ratings, release dates and
+  more.
+- **User Profile and Personalization** – Manage your account and Customize your experience with available display
+  preferences.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Frontend**
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Material UI (MUI)
+- React Router
+- TanStack Query
+- Axios
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Backend & Services**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Supabase – Authentication, database and user data management.
+- TMDB API – Movie and TV series information.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
 
-```
+Make sure you have the following installed:
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+- Node.js
+- npm
+- A Supabase project
+- A TMDB API account and API access token
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Installation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
 
-```
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd msatracker
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env` file in the project root and configure the required environment variables:
+
+   ```env
+   VITE_TMDB_BEARER_TOKEN=your_tmdb_bearer_token
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+   ```
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Open the local development URL provided by Vite in your browser.
+
+## Available Scripts
+
+| Command           | Description                            |
+|-------------------|----------------------------------------|
+| `npm run dev`     | Starts the development server.         |
+| `npm run build`   | Builds the application for production. |
+| `npm run lint`    | Runs the linter.                       |
+| `npm run preview` | Previews the production build locally. |
+
+## API & Attribution
+
+msatracker uses the [TMDB API](https://developer.themoviedb.org/) to retrieve movie and TV series information.
+This product uses the TMDB API but is not endorsed or certified by TMDB.
+
+## Disclaimer
+
+msatracker is a media tracking and organization application. It does not host, distribute or stream movies, television
+series or anime.
+
+## License & Usage Terms
+
+*Copyright © 2026 MSATracker. All rights reserved.*
+
+This repository is made public for **viewing and reference purposes only**.
+
+* **Allowed:** Viewing and reading the source code.
+* **Not Allowed:** Copying, modifying, distributing, or using this code (in whole or in part) in personal, academic, or commercial projects without explicit written permission.
+
+For licensing inquiries, please contact ***ng.shaden@gmail.com***.
