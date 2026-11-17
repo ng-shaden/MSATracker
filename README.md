@@ -1,8 +1,11 @@
 # msatracker
 
-msatracker started as a personal project of mine to solve a simple problem: keeping track of movies, TV series and anime
+msatracker is a personal hobby project of mine to solve a simple problem: keeping track of movies, TV series and anime
 I want
-to watch. What began as a personal solution grew into a hobby project and a way to explore web development.
+to watch. 
+
+What started as a solution to a personal problem also became an opportunity to explore web development,
+experiment with modern technologies and turn an idea into a functional application.
 
 ## Features
 
@@ -104,6 +107,7 @@ series or anime.
 This repository is made public for **viewing and reference purposes only**.
 
 * **Allowed:** Viewing and reading the source code.
-* **Not Allowed:** Copying, modifying, distributing, or using this code (in whole or in part) in personal, academic, or commercial projects without explicit written permission.
+* **Not Allowed:** Copying, modifying, distributing, or using this code (in whole or in part) in personal, academic, or
+  commercial projects without explicit written permission.
 
 For licensing inquiries, please contact ***ng.shaden@gmail.com***.
