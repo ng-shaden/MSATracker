@@ -1,5 +1,5 @@
 import {Outlet, useNavigate} from "react-router";
-import {Box, Typography} from "@mui/material";
+import {Box, Stack, Typography} from "@mui/material";
 import {Footer} from "../components/Footer.tsx";
 
 export default function PublicLayout() {
@@ -11,12 +11,21 @@ export default function PublicLayout() {
     return (
         <Box position={"relative"}>
             <Box position="fixed" top={30} left={{xs: 20, sm: 50}} zIndex={10}>
-                <Typography fontSize={{xs: "1.2rem", sm: "1.5rem"}} noWrap fontWeight={600} onClick={handleLogoClick} sx={{cursor: "pointer"}}>
-                    msa
-                    <Box component={"span"} color={"secondary.main"}>
-                        tracker
-                    </Box>
-                </Typography>
+                <Stack direction={"row"} alignItems={"center"} spacing={1} onClick={handleLogoClick}
+                       sx={{cursor: "pointer"}}>
+                    <Box
+                        component="img"
+                        src="logo.png"
+                        alt="msatracker logo"
+                        width={{xs: 50}}
+                    />
+                    <Typography fontSize={{xs: "1.2rem", sm: "1.5rem"}} noWrap fontWeight={600}>
+                        msa
+                        <Box component={"span"} color={"secondary.main"}>
+                            tracker
+                        </Box>
+                    </Typography>
+                </Stack>
             </Box>
             <Outlet/>
             <Footer brandName={"msatracker"}/>

@@ -1,9 +1,12 @@
 import {
     AppBar as MuiAppBar,
     type AppBarProps as MuiAppBarProps,
+    Box,
+    IconButton,
+    Stack,
+    styled,
     Toolbar,
     Typography,
-    styled, Stack, IconButton, Box,
 } from "@mui/material";
 import {collapsedDrawerWidth, drawerWidth, topBarHeight} from "../layoutConstants.ts";
 import {SearchBar} from "./SearchBar.tsx";
@@ -72,19 +75,27 @@ export default function TopBar({open, onMenuClick, onSearchOpen}: TopBarProps) {
                     onClick={onMenuClick}
                     sx={{
                         display: {xs: "inline-flex", md: "none"},
-                        mr: 2,
+                        mr: {xs: 1, md: 2},
                     }}
                 >
                     <MenuIcon/>
                 </IconButton>
-                <Stack direction={"row"} flex={1} justifyContent={"space-between"} alignItems={"center"}>
-                    {/*LOGO*/}
-                    <Typography variant="h5" noWrap fontWeight={600} onClick={handleLogoClick} sx={{cursor: "pointer"}}>
-                        msa
-                        <Box component={"span"} color={"secondary.main"}>
-                            tracker
-                        </Box>
-                    </Typography>
+                <Stack ml={{xs: 0, sm: 1.5, md: 2}} direction={"row"} flex={1} justifyContent={"space-between"}
+                       alignItems={"center"}>
+                    <Stack direction={"row"} alignItems={"center"} sx={{cursor: "pointer"}} onClick={handleLogoClick}>
+                        <Box
+                            component="img"
+                            src="/logo.png"
+                            alt="msatracker logo"
+                            width={{xs: 50}}
+                        />
+                        <Typography variant="h5" noWrap fontWeight={600}>
+                            msa
+                            <Box component={"span"} color={"secondary.main"}>
+                                tracker
+                            </Box>
+                        </Typography>
+                    </Stack>
                     <SearchBar onSearchOpen={onSearchOpen}/>
                 </Stack>
             </Toolbar>
