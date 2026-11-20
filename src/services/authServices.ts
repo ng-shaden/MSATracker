@@ -35,3 +35,9 @@ export async function logOut() {
     const {error} = await supabase.auth.signOut({scope: "local"});
     if (error) throw error;
 }
+
+export async function resetPassword(email: string) {
+    const {data, error} = await supabase.auth.resetPasswordForEmail(email);
+    if (error) throw error;
+    return {data};
+}

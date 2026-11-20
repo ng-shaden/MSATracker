@@ -34,9 +34,7 @@ export function SignUpPage() {
             },
             {
                 onSuccess: () => {
-                    navigate("/login", {
-                        state: {signupSuccess: true},
-                    });
+                    navigate("/login", {state: {signupSuccess: true},});
                 },
             }
         );

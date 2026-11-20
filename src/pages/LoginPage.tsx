@@ -3,10 +3,8 @@ import {useLocation, useNavigate} from "react-router";
 import {useLogIn} from "../hooks/UseAuth.ts";
 import {AuthLayout} from "../components/auth/AuthLayout.tsx";
 import {AuthForm} from "../components/auth/AuthForm.tsx";
-import {Alert, Snackbar, Typography} from "@mui/material";
-import Slide, {type SlideProps} from '@mui/material/Slide';
-import CheckIcon from "@mui/icons-material/Check";
 import type {AuthError} from "@supabase/supabase-js";
+import {NotificationPopUp} from "../components/NotificationPopUp.tsx";
 
 export function LoginPage() {
     const [email, setEmail] = useState("");
@@ -19,6 +17,10 @@ export function LoginPage() {
         location.state?.signupSuccess === true
     );
 
+    const [showForgotPasswordSuccess, setForgotPasswordSuccess] = useState(
+        location.state?.forgotPasswordSuccess === true
+    );
+
     const isBanned = (error as AuthError | null)?.code === "user_banned";
 
     const errorMessage = isBanned ? "This account has been deleted. Please contact support." : error?.message;
@@ -26,13 +28,9 @@ export function LoginPage() {
     async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
         login(
-            {email, password},
+            {email: email.trim(), password},
             {onSuccess: () => navigate("/home", {replace: true})},
         );
-    }
-
-    function SlideTransition(props: SlideProps) {
-        return <Slide {...props} direction="left"/>;
     }
 
     return (
@@ -53,46 +51,59 @@ export function LoginPage() {
                 footerLinkText="Sign up"
                 footerLinkTo="/signup"
             />
-            <Snackbar
+            {/*<Snackbar*/}
+            {/*    open={showSignupSuccess}*/}
+            {/*    autoHideDuration={6000}*/}
+            {/*    onClose={() => setShowSignupSuccess(false)}*/}
+            {/*    anchorOrigin={{vertical: "top", horizontal: "right"}}*/}
+            {/*    slots={{transition: SlideTransition}}*/}
+            {/*    sx={{*/}
+            {/*        mt: 2,*/}
+            {/*        mr: {xs: 0, md: 2},*/}
+            {/*        "& .MuiSnackbarContent-root": {*/}
+            {/*            borderRadius: 3,*/}
+            {/*        },*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    <Alert*/}
+            {/*        icon={<CheckIcon fontSize={"large"}/>}*/}
+            {/*        severity="success"*/}
+            {/*        variant="outlined"*/}
+            {/*        onClose={() => setShowSignupSuccess(false)}*/}
+            {/*        sx={{*/}
+            {/*            borderRadius: 2,*/}
+            {/*            border: "2px solid",*/}
+            {/*            borderColor: "success.dark",*/}
+            {/*            bgcolor: "background.paper",*/}
+            {/*            color: "success.main",*/}
+            {/*            "& .MuiAlert-icon": {*/}
+            {/*                alignItems: "center",*/}
+            {/*            },*/}
+            {/*            "& .MuiAlert-message": {*/}
+            {/*                py: 0.5,*/}
+            {/*            }*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        <Typography variant={"subtitle1"} lineHeight={{xs: 1.1, sm: "auto"}} mb={{xs: 1, sm: 0.5}}*/}
+            {/*                    fontWeight={600}>Account created successfully!</Typography>*/}
+            {/*        <Typography variant="body2" color="text.secondary" lineHeight={{xs: "auto", sm: 1.1}}>*/}
+            {/*            Check your inbox to confirm your email address.*/}
+            {/*        </Typography>*/}
+            {/*    </Alert>*/}
+            {/*</Snackbar>*/}
+            <NotificationPopUp
                 open={showSignupSuccess}
-                autoHideDuration={6000}
                 onClose={() => setShowSignupSuccess(false)}
-                anchorOrigin={{vertical: "top", horizontal: "right"}}
-                slots={{transition: SlideTransition}}
-                sx={{
-                    mt: 2,
-                    mr: {xs: 0, md: 2},
-                    "& .MuiSnackbarContent-root": {
-                        borderRadius: 3,
-                    },
-                }}
-            >
-                <Alert
-                    icon={<CheckIcon fontSize={"large"}/>}
-                    severity="success"
-                    variant="outlined"
-                    onClose={() => setShowSignupSuccess(false)}
-                    sx={{
-                        borderRadius: 2,
-                        border: "2px solid",
-                        borderColor: "success.dark",
-                        bgcolor: "background.paper",
-                        color: "success.main",
-                        "& .MuiAlert-icon": {
-                            alignItems: "center",
-                        },
-                        "& .MuiAlert-message": {
-                            py: 0.5,
-                        }
-                    }}
-                >
-                    <Typography variant={"subtitle1"} lineHeight={{xs: 1.1, sm: "auto"}} mb={{xs: 1, sm: 0.5}}
-                                fontWeight={600}>Account created successfully!</Typography>
-                    <Typography variant="body2" color="text.secondary" lineHeight={{xs: "auto", sm: 1.1}}>
-                        Check your inbox to confirm your email address.
-                    </Typography>
-                </Alert>
-            </Snackbar>
+                title={"Account created successfully!"}
+                subtitle={"Check your inbox to confirm your email address."}
+            />
+
+            <NotificationPopUp
+                open={showForgotPasswordSuccess}
+                onClose={() => setForgotPasswordSuccess(false)}
+                title="Password reset email sent!"
+                subtitle={"Check your inbox to reset your password."}
+            />
         </AuthLayout>
     );
 }
