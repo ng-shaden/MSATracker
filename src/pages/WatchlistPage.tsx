@@ -40,7 +40,8 @@ export function WatchlistPage() {
 
             <MediaCollection
                 media={mediaDetails}
-                userMedia={userMedia} mediaTypeFilter={mediaTypeFilter}
+                userMedia={userMedia}
+                mediaTypeFilter={mediaTypeFilter}
                 onFilterChange={handleChange}
                 filteredMedia={filteredMedia}
                 icon={BookmarkBorderOutlinedIcon}

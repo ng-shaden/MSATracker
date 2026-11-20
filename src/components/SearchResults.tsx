@@ -1,4 +1,4 @@
-import {Stack} from "@mui/material";
+import {Box, Stack} from "@mui/material";
 import {MediaCard} from "./media/MediaCard.tsx";
 import {useMultiSearch} from "../hooks/UseTMDBs.ts";
 import {useUserMediaStatuses} from "../hooks/UseUserMedia.ts";
@@ -14,7 +14,7 @@ export function SearchResults({query}: SearchResultsProps) {
         item => item.media_type === "movie" || item.media_type === "tv"
     );
 
-    const { data: statuses = [] } = useUserMediaStatuses(titles);
+    const {data: statuses = []} = useUserMediaStatuses(titles);
 
     const statusMap = new Map(
         statuses.map((item) => [
@@ -26,13 +26,9 @@ export function SearchResults({query}: SearchResultsProps) {
     return (
         <Stack direction="row" flexWrap="wrap" gap={3}>
             {titles.map(item => (
-                <MediaCard
-                    media={item}
-                    key={`${item.media_type}-${item.id}`}
-                    userMediaStatus={statusMap.get(
-                        `${item.media_type}-${item.id}`
-                    )}
-                />
+                <Box key={`${item.media_type}-${item.id}`} sx={{width: {xs: "100%", sm: "35%", md: 300}, minWidth: 0}}>
+                    <MediaCard media={item} userMediaStatus={statusMap.get(`${item.media_type}-${item.id}`)}/>
+                </Box>
             ))}
         </Stack>
     );

@@ -137,7 +137,7 @@ export function MediaCollection({
                             overscan={600}
                             components={{List: GridList, Item: GridItem}}
                             computeItemKey={(_, item) => `${item.media_type}-${item.id}`}
-                            initialItemCount={5}
+                            initialItemCount={Math.min(filteredMedia.length, 5)}
                             itemContent={(_, item) => (
                                 <MediaCard
                                     media={item}

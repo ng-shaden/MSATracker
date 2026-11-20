@@ -38,15 +38,22 @@ export function HomePage() {
             <Box mt={{xs: 10}}>
 
                 <Typography fontSize={{xs: "2rem", sm: "1.6rem"}}
-                            sx={{fontWeight: 500, letterSpacing: "-0.01rem", textWrap: "nowrap", color: "secondary.main"}}>
+                            sx={{
+                                fontWeight: 500,
+                                letterSpacing: "-0.01rem",
+                                textWrap: "nowrap",
+                                color: "secondary.main"
+                            }}>
                     Trending now
                 </Typography>
                 <Divider sx={{mb: 3, borderColor: "secondary.dark", borderWidth: 1, borderRadius: 4, width: 180}}/>
             </Box>
             <Stack direction="row" flexWrap={"wrap"} gap={3}>
                 {titles.map(item => (
-                    <MediaCard media={item} key={`${item.media_type}-${item.id}`}
-                               userMediaStatus={statusMap.get(`${item.media_type}-${item.id}`)}/>
+                    <Box key={`${item.media_type}-${item.id}`}
+                         sx={{width: {xs: "100%", sm: "35%", md: 300}, minWidth: 0}}>
+                        <MediaCard media={item} userMediaStatus={statusMap.get(`${item.media_type}-${item.id}`)}/>
+                    </Box>
                 ))}
             </Stack>
 
