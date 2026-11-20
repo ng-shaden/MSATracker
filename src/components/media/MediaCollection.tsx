@@ -30,6 +30,8 @@ const GridList = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
     )
 );
 
+// Virtuoso wraps each item in its own div, so the width must be set here (not inside the card)
+// or a long noWrap title can stretch the wrapper and make that card bigger than the rest.
 const GridItem = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
     ({children, ...props}, ref) => (
         <Box ref={ref}{...props} sx={{width: {xs: "100%", sm: "35%", md: 300}, minWidth: 0}}>

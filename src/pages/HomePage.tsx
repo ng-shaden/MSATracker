@@ -50,6 +50,8 @@ export function HomePage() {
             </Box>
             <Stack direction="row" flexWrap={"wrap"} gap={3}>
                 {titles.map(item => (
+                    // Parent owns the width, not MediaCard: react-virtuoso wraps items in a content-sized div,
+                    // so a width inside the card lets long titles stretch it. Same rule as GridItem.
                     <Box key={`${item.media_type}-${item.id}`}
                          sx={{width: {xs: "100%", sm: "35%", md: 300}, minWidth: 0}}>
                         <MediaCard media={item} userMediaStatus={statusMap.get(`${item.media_type}-${item.id}`)}/>
