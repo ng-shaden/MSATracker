@@ -1,7 +1,7 @@
 import {
     Alert,
     Box,
-    Button,
+    Button, Divider,
     Stack,
     TextField,
     Typography,
@@ -152,7 +152,8 @@ export function AuthForm({
                             fullWidth
                         />
 
-                        <Typography variant={"caption"} color={"textDisabled"} textAlign={"center"}>By clicking sign up, you agree to our {" "}
+                        <Typography variant={"caption"} color={"textDisabled"} textAlign={"center"}>By clicking sign up,
+                            you agree to our {" "}
                             <MuiLink
                                 component={RouterLink}
                                 to={"/terms-and-conditions"}
@@ -180,7 +181,27 @@ export function AuthForm({
                 >
                     {isLoading ? loadingLabel : submitLabel}
                 </Button>
+
+                {!showSignUpFields && (
+                    <Typography variant={"caption"} color={"textDisabled"} textAlign={"end"}>
+                        <MuiLink
+                            component={RouterLink}
+                            to={"/terms-and-conditions"} //TODO
+                            underline="none"
+                            sx={{
+                                color: "secondary.main",
+                                "&:hover": {
+                                    textDecoration: "underline",
+                                },
+                            }}
+                        >
+                            Forgot password?
+                        </MuiLink>
+                    </Typography>
+                )}
             </Stack>
+
+            <Divider/>
 
             <Typography variant="body2" textAlign="center" color={"textSecondary"} sx={{letterSpacing: '0.1em'}}>
                 {footerText}{" "}
