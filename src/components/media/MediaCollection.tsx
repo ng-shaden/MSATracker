@@ -1,16 +1,16 @@
 import {Box, Fade, Stack, ToggleButton, ToggleButtonGroup} from "@mui/material";
-import {type ElementType, type MouseEvent} from "react";
+import {type ElementType, forwardRef, type HTMLProps, type MouseEvent, useMemo} from "react";
 import type {TMDBMedia} from "../../model/TMDBMedia.ts";
-import type {UserMediaItem} from "../../model/UserMedia.ts";
+import type {UserMediaItem, UserMediaStatus} from "../../model/UserMedia.ts";
 import {MediaCard} from "./MediaCard.tsx";
 import {UserMediaListEmptyState} from "../UserMediaListEmptyState.tsx";
+import {VirtuosoGrid} from "react-virtuoso";
 
 interface EmptyStateContent {
     overline: string;
     title: string;
     text: string;
 }
-
 
 interface MediaCollectionProps {
     media: TMDBMedia[];
@@ -22,6 +22,22 @@ interface MediaCollectionProps {
     emptyState: EmptyStateContent;
 }
 
+const GridList = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
+    ({style, children, ...props}, ref) => (
+        <Box ref={ref}{...props} style={style} sx={{display: "flex", flexWrap: "wrap", gap: 3}}>
+            {children}
+        </Box>
+    )
+);
+
+const GridItem = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
+    ({children, ...props}, ref) => (
+        <Box ref={ref}{...props} sx={{width: {xs: "100%", sm: "35%", md: 300}, minWidth: 0}}>
+            {children}
+        </Box>
+    )
+);
+
 export function MediaCollection({
                                     media,
                                     userMedia,
@@ -31,6 +47,16 @@ export function MediaCollection({
                                     icon: Icon,
                                     emptyState
                                 }: MediaCollectionProps) {
+
+    const statusByKey = useMemo(() => {
+        const map = new Map<string, UserMediaStatus>();
+        media.forEach((m, i) => {
+            const status = userMedia[i]?.userMedia.status;
+            if (status) map.set(`${m.media_type}-${m.id}`, status);
+        });
+        return map;
+    }, [media, userMedia]);
+
     return (
         <Stack mt={10} gap={3} sx={{flex: 1}}>
             <Box
@@ -103,26 +129,24 @@ export function MediaCollection({
             {userMedia.length === 0 ? (
                 <UserMediaListEmptyState icon={Icon} {...emptyState}/>
             ) : (
-                <Stack direction="row" flexWrap="wrap" gap={3}>
-                    {filteredMedia.map((item) => {
-                        const originalIndex = media.findIndex(
-                            (mediaItem) =>
-                                mediaItem.id === item.id &&
-                                mediaItem.media_type === item.media_type
-                        );
-
-                        return (
-                            <Fade key={`${mediaTypeFilter}-${item.media_type}-${item.id}`} in timeout={500}>
-                                <Box>
-                                    <MediaCard
-                                        media={item}
-                                        userMediaStatus={userMedia[originalIndex]?.userMedia.status}
-                                    />
-                                </Box>
-                            </Fade>
-                        )
-                    })}
-                </Stack>
+                <Fade key={mediaTypeFilter} in timeout={500}>
+                    <Box>
+                        <VirtuosoGrid
+                            useWindowScroll
+                            data={filteredMedia}
+                            overscan={600}
+                            components={{List: GridList, Item: GridItem}}
+                            computeItemKey={(_, item) => `${item.media_type}-${item.id}`}
+                            initialItemCount={5}
+                            itemContent={(_, item) => (
+                                <MediaCard
+                                    media={item}
+                                    userMediaStatus={statusByKey.get(`${item.media_type}-${item.id}`)}
+                                />
+                            )}
+                        />
+                    </Box>
+                </Fade>
             )}
         </Stack>
     );

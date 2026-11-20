@@ -10,13 +10,14 @@ import {useNavigate} from "react-router";
 import type {UserMediaStatus} from "../../model/UserMedia.ts";
 import {MediaStatusMenu} from "./MediaStatusMenu.tsx";
 import {NO_POSTER_URL} from "../../utils/utils.ts";
+import {memo} from "react";
 
 interface MediaCardProps {
     media: TMDBMedia
     userMediaStatus?: UserMediaStatus
 }
 
-export function MediaCard({media, userMediaStatus}: MediaCardProps) {
+export const MediaCard = memo(function MediaCard({media, userMediaStatus}: MediaCardProps) {
     const navigate = useNavigate();
     const isMovie = media.media_type === "movie";
     const title = isMovie ? media.title : media.name;
@@ -28,7 +29,7 @@ export function MediaCard({media, userMediaStatus}: MediaCardProps) {
         <Card
             sx={{
                 position: "relative", // anchor for the absolutely positioned button
-                width: {xs: "100%", sm: "35%", md: 300},
+                width: "100%",
                 bgcolor: "background.default",
                 backgroundImage: "none",
                 borderRadius: 3,
@@ -38,6 +39,7 @@ export function MediaCard({media, userMediaStatus}: MediaCardProps) {
                 onClick={() => navigate(`/${isMovie ? "movie" : "series"}/${media.id}`)}>
                 <CardMedia
                     loading={"lazy"}
+                    decoding={"async"}
                     component="img"
                     image={poster}
                     alt={title ?? "Unknown title"}
@@ -96,4 +98,4 @@ export function MediaCard({media, userMediaStatus}: MediaCardProps) {
             />
         </Card>
     );
-}
+});

@@ -25,6 +25,7 @@
     "react-error-boundary": "^6.1.2",
     "react-hook-form": "^7.80.0",
     "react-router": "^8.4.0",
+    "react-virtuoso": "^4.18.23",
     "zod": "^4.4.3"
   },
   "devDependencies": {
