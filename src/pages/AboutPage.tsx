@@ -9,7 +9,16 @@ export function AboutPage() {
         <>
             <ImageBanner/>
             <Divider/>
-            <Stack alignItems={"center"} my={8} spacing={3}>
+            <Stack alignItems={"center"} mb={8} mt={4} spacing={3}>
+                <Box
+                    component="img"
+                    src="/logo.png"
+                    alt="MSATracker logo"
+                    sx={{
+                        width: {xs: 190, sm: 240, md: 280},
+                    }}
+                />
+
                 <Typography variant="body1" maxWidth={{xs: 280, sm: 600, md: 800}} textAlign={"justify"}>
                     MSATracker is a personal media tracking platform designed to make keeping track of your favourite
                     movies and TV series simple and enjoyable.
