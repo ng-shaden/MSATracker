@@ -74,6 +74,119 @@ export function AboutPage() {
                         {" "}profiles.
                     </Typography>
                 </Stack>
+
+                <Stack alignItems="center" spacing={4}>
+                    <Typography variant="h5" fontWeight={600}>
+                        Credits & Attributions
+                    </Typography>
+
+                    <Typography variant="body1" maxWidth={{xs: 280, sm: 600, md: 800}}>
+                        MSATracker uses third-party resources and assets. We gratefully acknowledge their respective
+                        creators and contributors.
+                    </Typography>
+
+                    <Stack spacing={3} maxWidth={{xs: 280, sm: 600, md: 800}}>
+                        <Box>
+                            <Typography variant="subtitle1" fontWeight={600} mb={1}>
+                                Default Media Poster
+                            </Typography>
+
+                            <Typography variant="body1">
+                                <MuiLink
+                                    href="https://commons.wikimedia.org/wiki/File:No-Image-Placeholder.svg"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    color="secondary"
+                                    underline="hover"
+                                >
+                                    The default poster image
+                                </MuiLink>
+                                {" "} displayed when a media title does
+                                not have an available poster was created by{" "}
+                                <MuiLink
+                                    href="https://commons.wikimedia.org/wiki/User:Ranjithsiji"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    color="secondary"
+                                    underline="hover"
+                                >
+                                    Ranjithsiji
+                                </MuiLink>
+                                , based on{" "}
+                                <MuiLink
+                                    href="https://commons.wikimedia.org/wiki/File:Natural_landmark_without_photo.svg"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    underline="hover"
+                                >
+                                    Natural landmark without photo.svg
+                                </MuiLink>
+                                {" "}by{" "}
+                                <MuiLink
+                                    href="https://commons.wikimedia.org/wiki/User:Hellerick"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    color="secondary"
+                                    underline="hover"
+                                >
+                                    Hellerick
+                                </MuiLink>
+                                .
+                            </Typography>
+
+                            <Typography variant="body2" color="text.secondary" mt={1}>
+                                Licensed under{" "}
+                                <MuiLink
+                                    href="https://creativecommons.org/licenses/by-sa/4.0/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    color="text.secondary"
+                                    underline="hover"
+                                >
+                                    CC BY-SA 4.0
+                                </MuiLink>
+                                {" "} via Wikimedia Commons.
+                            </Typography>
+                        </Box>
+
+                        <Divider/>
+
+                        <Box>
+                            <Typography variant="subtitle1" fontWeight={600} mb={1}>
+                                Authentication Page Background
+                            </Typography>
+
+                            <Typography variant="body1" textAlign="justify">
+                                <MuiLink
+                                    href="https://unsplash.com/photos/curved-red-metal-panels-with-grooves-MgG-w0Dg_Ek"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    color="secondary"
+                                    underline="hover"
+                                >
+                                    The photograph
+                                </MuiLink>
+                                {" "} displayed in the background of our authentication pages, including login, signup
+                                and password reset, was taken bu {" "}
+                                <MuiLink
+                                    href="https://unsplash.com/@jdelacuesta"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    color="secondary"
+                                    underline="hover"
+                                >
+                                    JC Dela Cuesta
+                                </MuiLink>
+                                .
+                            </Typography>
+
+                            <Typography variant="body2" color="text.secondary" mt={1}>
+                                Licensed under the Unsplash License.
+                            </Typography>
+                        </Box>
+                    </Stack>
+                </Stack>
+
             </Stack>
 
             <Divider/>
