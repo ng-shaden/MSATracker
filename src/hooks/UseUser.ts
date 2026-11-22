@@ -1,10 +1,10 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import type {UpdateUserDto} from "../model/User.ts";
 import {UserAuth} from "../context/AuthContextProvider.tsx";
-import {deleteUser, updateUser} from "../services/userServices.ts";
+import {deleteUser, getUserData, updateUser} from "../services/userServices.ts";
 
 export function useUpdateUser() {
-    const {user, setUser } = UserAuth();
+    const {user, setUser} = UserAuth();
 
     const {mutate, isPending, error} = useMutation({
         mutationFn: (userDto: UpdateUserDto) => updateUser(user!.userId, userDto),
@@ -33,5 +33,16 @@ export function useDeleteUser() {
     return {
         deleteAccount: mutateAsync,
         isDeleting: isPending
+    }
+}
+
+export function useExportUserData() {
+    const {mutateAsync, isPending} = useMutation({
+        mutationFn: getUserData,
+    });
+
+    return {
+        downloadUserData: mutateAsync,
+        isDownloading: isPending
     }
 }

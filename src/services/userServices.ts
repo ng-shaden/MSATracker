@@ -66,3 +66,26 @@ export async function deleteUser() {
     const {error} = await supabase.rpc("delete_my_account");
     if (error) throw error;
 }
+
+export async function getUserData(){
+    const { data, error } = await supabase.functions.invoke("export-user-data");
+
+    if (error) throw error;
+
+    const blob = new Blob(
+        [JSON.stringify(data, null, 4)],
+        { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "msatracker-personal-data.json";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+}

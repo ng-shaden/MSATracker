@@ -13,7 +13,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import {useLogOut} from "../hooks/UseAuth.ts";
 import DeleteIcon from '@mui/icons-material/Delete';
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import {useDeleteUser} from "../hooks/UseUser.ts";
+import {useDeleteUser, useExportUserData} from "../hooks/UseUser.ts";
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import {BaseDialog} from "./BaseDialog.tsx";
 
@@ -25,7 +25,7 @@ export function ProfileOptionsMenu() {
     const [openRequestDialog, setOpenRequestDialog] = useState(false);
     const {deleteAccount, isDeleting} = useDeleteUser();
     const [countdownStartedAt, setCountdownStartedAt] = useState<number | null>(null);
-
+    const {downloadUserData, isDownloading} = useExportUserData();
     const handleMenuClose = () => setAnchorEl(null);
 
     const handleLogout = async () => {
@@ -44,7 +44,12 @@ export function ProfileOptionsMenu() {
     };
 
     const handleRequestData = async () => {
-
+        try {
+            await downloadUserData();
+            setOpenRequestDialog(false);
+        } catch (error) {
+            console.error("Failed to export user data:", error);
+        }
     };
 
     return (
@@ -213,13 +218,13 @@ export function ProfileOptionsMenu() {
 
             <BaseDialog
                 open={openRequestDialog}
-                isLoading={isDeleting}
+                isLoading={isDownloading}
                 confirmDelaySeconds={10}
                 countdownStartedAt={countdownStartedAt}
                 onClose={() => setOpenRequestDialog(false)}
                 onConfirm={handleRequestData}
                 title="Request Your Data"
-                description="Would you like to download a copy of the personal data associated with your account? This includes your profile information, watchlist, currently watching list, and completed list."
+                description="Would you like to download a copy of the personal data associated with your account? This includes your profile information, personal preferences, favorites, watchlist, currently watching, and completed lists."
                 confirmText="Download Data"
             />
         </>
