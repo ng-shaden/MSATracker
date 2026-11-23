@@ -1,7 +1,6 @@
 import {Box, Divider, Stack, Typography, Link as MuiLink} from "@mui/material";
 import {ContactFormFields} from "../components/ContactFormFields.tsx";
 import {GITHUB_URL, LINKEDIN_URL} from "../utils/utils.ts";
-import {Link as RouterLink} from "react-router"
 
 export function ContactPage() {
     return (
@@ -44,13 +43,6 @@ export function ContactPage() {
             <Divider/>
 
             <ContactFormFields/>
-
-            <Typography variant="body2" color="text.secondary">
-                Your details are used only to respond to your enquiry. See our{" "}
-                <MuiLink component={RouterLink} to="/privacy-policy" color="secondary" underline="hover">
-                    Privacy Policy
-                </MuiLink>.
-            </Typography>
         </Stack>
     )
 }

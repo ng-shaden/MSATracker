@@ -7,7 +7,6 @@ export const staleTimes = {
 };
 
 // CONSTANTS
-//TODO better no poster picture
 export const NO_POSTER_URL = "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
 export const CONTACT_EMAIL = "ng.shaden@gmail.com";
 export const OPERATOR_NAME = "Shaden Ng";

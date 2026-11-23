@@ -1,5 +1,6 @@
 import {useState} from "react";
-import {Button, Stack, TextField} from "@mui/material";
+import {Button, Stack, TextField, Typography, Link as MuiLink} from "@mui/material";
+import {Link as RouterLink} from "react-router"
 
 export function ContactFormFields() {
     const [name, setName] = useState("");
@@ -49,7 +50,12 @@ export function ContactFormFields() {
                 multiline
                 rows={10}
             />
-
+            <Typography variant="body2" color="text.secondary">
+                Your details are used only to respond to your enquiry. See our{" "}
+                <MuiLink component={RouterLink} to="/privacy-policy" color="secondary" underline="hover">
+                    Privacy Policy
+                </MuiLink>.
+            </Typography>
             <Button
                 size={"large"}
                 variant="contained"
