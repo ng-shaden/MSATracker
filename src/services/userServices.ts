@@ -1,5 +1,6 @@
 import {supabase} from "../lib/supabaseClient.ts";
 import type {UpdateUserDto, User} from "../model/User.ts";
+import JSZip from "jszip";
 
 export async function updateUser(userId: string, updates: UpdateUserDto): Promise<User> {
     const dbUpdates = {
@@ -31,9 +32,9 @@ export async function updateUser(userId: string, updates: UpdateUserDto): Promis
 }
 
 export async function updateProfilePicture(userId: string, fileName: string) {
-    const { data, error } = await supabase
+    const {data, error} = await supabase
         .from("users")
-        .update({ profile_picture: fileName })
+        .update({profile_picture: fileName})
         .eq("user_id", userId)
         .select()
         .single();
@@ -52,9 +53,9 @@ export async function updateProfilePicture(userId: string, fileName: string) {
 
 
 export async function isUsernameTaken(username: string): Promise<boolean> {
-    const { data, error } = await supabase.rpc(
+    const {data, error} = await supabase.rpc(
         "is_username_taken",
-        { check_username: username }
+        {check_username: username}
     );
 
     if (error) throw error;
@@ -67,25 +68,46 @@ export async function deleteUser() {
     if (error) throw error;
 }
 
-export async function getUserData(){
-    const { data, error } = await supabase.functions.invoke("export-user-data");
+async function getUserData() {
+    const {data, error} = await supabase.functions.invoke("export-user-data");
 
     if (error) throw error;
 
-    const blob = new Blob(
-        [JSON.stringify(data, null, 4)],
-        { type: "application/json" }
-    );
+    return data;
+}
 
-    const url = URL.createObjectURL(blob);
+async function createUserDataArchive(): Promise<Blob> {
+    const [data, response] = await Promise.all([
+        getUserData(),
+        fetch("/README.md"),
+    ]);
+
+    if (!response.ok) {
+        throw new Error("Unable to load the export README.");
+    }
+
+    const readme = await response.text();
+
+    const zip = new JSZip();
+
+    zip.file("README.md", readme);
+    zip.file("personal-data.json", JSON.stringify(data, null, 4));
+
+    return zip.generateAsync({type: "blob"});
+}
+
+export async function exportUserData() {
+    const archive = await createUserDataArchive();
+
+    const url = URL.createObjectURL(archive);
     const link = document.createElement("a");
 
     link.href = url;
-    link.download = "msatracker-personal-data.json";
+    link.download = "msatracker-personal-data.zip";
 
     document.body.appendChild(link);
     link.click();
     link.remove();
 
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

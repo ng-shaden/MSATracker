@@ -23,9 +23,9 @@ export function ProfileOptionsMenu() {
     const {logout, isLoggingOut} = useLogOut();
     const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
     const [openRequestDialog, setOpenRequestDialog] = useState(false);
-    const {deleteAccount, isDeleting} = useDeleteUser();
+    const {deleteAccount, isDeleting, deleteError} = useDeleteUser();
     const [countdownStartedAt, setCountdownStartedAt] = useState<number | null>(null);
-    const {downloadUserData, isDownloading} = useExportUserData();
+    const {exportUserData, isExporting, exportError} = useExportUserData();
     const handleMenuClose = () => setAnchorEl(null);
 
     const handleLogout = async () => {
@@ -44,12 +44,11 @@ export function ProfileOptionsMenu() {
     };
 
     const handleRequestData = async () => {
-        try {
-            await downloadUserData();
-            setOpenRequestDialog(false);
-        } catch (error) {
-            console.error("Failed to export user data:", error);
-        }
+        exportUserData(undefined, {
+            onSuccess: () => {
+                setOpenRequestDialog(false);
+            },
+        });
     };
 
     return (
@@ -204,21 +203,28 @@ export function ProfileOptionsMenu() {
                 description="Are you sure you want to delete your account? This action will initiate the deletion of your profile and all associated data, including your watchlist, currently watching, and completed list."
                 confirmText="Delete account"
                 alert={
-                    <Alert
-                        icon={<InfoOutlinedIcon fontSize="small"/>}
-                        severity="warning"
-                        variant="outlined"
-                        sx={{mt: 3, textAlign: "left", borderRadius: 3, alignItems: "center"}}
-                    >
-                        You can request an account restoration within 30 days.
-                        After that, your account and data will be permanently deleted.
-                    </Alert>
+                    deleteError ? (
+                        <Alert severity="error" variant={"outlined"}
+                               sx={{mt: 3, textAlign: "left", borderRadius: 3, alignItems: "center"}}>
+                            Failed delete your account, Please try again later or contact us.
+                        </Alert>
+                    ) : (
+                        <Alert
+                            icon={<InfoOutlinedIcon fontSize="small"/>}
+                            severity="warning"
+                            variant="outlined"
+                            sx={{mt: 3, textAlign: "left", borderRadius: 3, alignItems: "center"}}
+                        >
+                            You can request an account restoration within 30 days.
+                            After that, your account and data will be permanently deleted.
+                        </Alert>
+                    )
                 }
             />
 
             <BaseDialog
                 open={openRequestDialog}
-                isLoading={isDownloading}
+                isLoading={isExporting}
                 confirmDelaySeconds={10}
                 countdownStartedAt={countdownStartedAt}
                 onClose={() => setOpenRequestDialog(false)}
@@ -226,6 +232,14 @@ export function ProfileOptionsMenu() {
                 title="Request Your Data"
                 description="Would you like to download a copy of the personal data associated with your account? This includes your profile information, personal preferences, favorites, watchlist, currently watching, and completed lists."
                 confirmText="Download Data"
+                alert={
+                    exportError && (
+                        <Alert severity="error" variant={"outlined"}
+                               sx={{mt: 3, textAlign: "left", borderRadius: 3, alignItems: "center"}}>
+                            Failed to export your data. Please try again later or contact us.
+                        </Alert>
+                    )
+                }
             />
         </>
     );
