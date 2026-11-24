@@ -11,6 +11,9 @@ import type {UserMediaStatus} from "../../model/UserMedia.ts";
 import {MediaStatusMenu} from "./MediaStatusMenu.tsx";
 import {NO_POSTER_URL} from "../../utils/utils.ts";
 import {memo} from "react";
+import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
+import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
+import {usePersonalPreferences} from "../../hooks/UsePersonalPreferences.ts";
 
 interface MediaCardProps {
     media: TMDBMedia
@@ -24,6 +27,7 @@ export const MediaCard = memo(function MediaCard({media, userMediaStatus}: Media
     const releaseDate = isMovie ? media.release_date : media.first_air_date;
     const poster = media.poster_path ? `${IMAGE_BASE_URL}${media.poster_path}` : NO_POSTER_URL;
     const year = releaseDate?.slice(0, 4);
+    const {personalPreferences} = usePersonalPreferences();
 
     return (
         <Card
@@ -54,7 +58,9 @@ export const MediaCard = memo(function MediaCard({media, userMediaStatus}: Media
                 />
 
                 <Chip
-                    label={isMovie ? "movie" : "series"}
+                    icon={!personalPreferences.showExtraLabels ? (isMovie ? <MovieOutlinedIcon/> :
+                        <LiveTvOutlinedIcon/>) : undefined}
+                    label={personalPreferences.showExtraLabels ? (isMovie ? "Movie" : "Series") : undefined}
                     size="small"
                     sx={{
                         position: "absolute",
@@ -62,7 +68,15 @@ export const MediaCard = memo(function MediaCard({media, userMediaStatus}: Media
                         left: 8,
                         borderRadius: 2,
                         bgcolor: "background.paper",
-                        textTransform: "capitalize",
+                        ...(!personalPreferences.showExtraLabels && {
+                            "& .MuiChip-label": {
+                                display: "none",
+                            },
+                            "& .MuiChip-icon": {
+                                margin: 0,
+                            },
+                            width: 32,
+                        }),
                     }}
                 />
 

@@ -4,6 +4,9 @@ import type {MovieDetails, TVSeriesDetails} from "@lorenzopant/tmdb";
 import {useUserMediaStatuses} from "../../hooks/UseUserMedia.ts";
 import {MediaStatusMenu} from "./MediaStatusMenu.tsx";
 import {NO_POSTER_URL} from "../../utils/utils.ts";
+import {usePersonalPreferences} from "../../hooks/UsePersonalPreferences.ts";
+import MovieOutlinedIcon from "@mui/icons-material/MovieOutlined";
+import LiveTvOutlinedIcon from "@mui/icons-material/LiveTvOutlined";
 
 interface MediaPosterProps {
     media: MovieDetails | TVSeriesDetails
@@ -20,6 +23,7 @@ export function MediaPoster({media, isMovie}: MediaPosterProps) {
     }];
     const {data} = useUserMediaStatuses(tmdbMedia);
     const userMediaStatus = data.find(item => Number(item.media.tmdb_id) === media.id && item.media.media_type === (isMovie ? "movie" : "series"))?.status;
+    const {personalPreferences} = usePersonalPreferences();
 
 
     return (
@@ -28,7 +32,9 @@ export function MediaPoster({media, isMovie}: MediaPosterProps) {
                  sx={{borderRadius: 3}}/>
 
             <Chip
-                label={isMovie ? "movie" : "series"}
+                icon={!personalPreferences.showExtraLabels ? (isMovie ? <MovieOutlinedIcon/> :
+                    <LiveTvOutlinedIcon/>) : undefined}
+                label={personalPreferences.showExtraLabels ? (isMovie ? "Movie" : "Series") : undefined}
                 size="small"
                 sx={{
                     position: "absolute",
@@ -36,7 +42,15 @@ export function MediaPoster({media, isMovie}: MediaPosterProps) {
                     left: 8,
                     borderRadius: 2,
                     bgcolor: "background.paper",
-                    textTransform: "capitalize",
+                    ...(!personalPreferences.showExtraLabels && {
+                        "& .MuiChip-label": {
+                            display: "none",
+                        },
+                        "& .MuiChip-icon": {
+                            margin: 0,
+                        },
+                        width: 32,
+                    }),
                 }}
             />
 

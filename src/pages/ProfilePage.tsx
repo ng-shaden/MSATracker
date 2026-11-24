@@ -101,7 +101,7 @@ export function ProfilePage() {
 
                                 <SwitchSetting
                                     title="Show extra information"
-                                    description="Display labels next to icons to explain what they do. Recommended for new users."
+                                    description="Display labels alongside icons or instead of icons to explain what they do. Recommended for new users."
                                     preferenceKey="showExtraLabels"
                                 />
                             </Stack>
