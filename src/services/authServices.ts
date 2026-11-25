@@ -1,4 +1,5 @@
 import {supabase} from "../lib/supabaseClient.ts";
+import {frontendUrl} from "../utils/utils.ts";
 
 export async function logInWithEmail(email: string, password: string) {
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -16,7 +17,7 @@ export async function signUpNewUser(email: string, password: string, firstName: 
         email: email,
         password: password,
         options: {
-            emailRedirectTo: 'https://localhost:5173/home',
+            emailRedirectTo: `${frontendUrl}/home`,
             data: {
                 username: userName,
                 email: email,

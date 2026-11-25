@@ -1,6 +1,5 @@
 import './App.css'
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import axios from "axios";
 import {BrowserRouter, Navigate, Route, Routes} from "react-router";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "./theme/theme.ts";
@@ -25,8 +24,6 @@ import {PrivacyPolicyPage} from "./pages/PrivacyPolicyPage.tsx";
 import {TermsAndConditionsPage} from "./pages/TermsAndConditionsPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import {ResetPasswordPage} from "./pages/ResetPasswordPage.tsx";
-
-axios.defaults.baseURL = "http://localhost:3000";
 
 const queryClient = new QueryClient()
 
