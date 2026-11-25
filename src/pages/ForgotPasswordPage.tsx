@@ -4,7 +4,7 @@ import {type SubmitEvent, useState} from "react";
 import {Link as RouterLink, useNavigate} from "react-router";
 import {useResetPassword} from "../hooks/UseAuth.ts";
 
-export function ResetPasswordPage() {
+export function ForgotPasswordPage() {
     const [email, setEmail] = useState("");
     const {resetPassword, isResettingPassword, error} = useResetPassword();
     const navigate = useNavigate();

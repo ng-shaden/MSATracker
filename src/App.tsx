@@ -23,7 +23,7 @@ import {CookiePolicyPage} from "./pages/CookiePolicyPage.tsx";
 import {PrivacyPolicyPage} from "./pages/PrivacyPolicyPage.tsx";
 import {TermsAndConditionsPage} from "./pages/TermsAndConditionsPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
-import {ResetPasswordPage} from "./pages/ResetPasswordPage.tsx";
+import {ForgotPasswordPage} from "./pages/ForgotPasswordPage.tsx";
 
 const queryClient = new QueryClient()
 
@@ -53,7 +53,7 @@ function AppContent() {
                 <Route element={<PublicLayout/>}>
                     <Route path="/login" element={<LoginPage/>}/>
                     <Route path="/signup" element={<SignUpPage/>}/>
-                    <Route path="/reset-password" element={<ResetPasswordPage/>}/>
+                    <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>
                     <Route path="/about" element={<AboutPage/>}/>
                     <Route path="/privacy-policy" element={<PrivacyPolicyPage/>}/>
                     <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>

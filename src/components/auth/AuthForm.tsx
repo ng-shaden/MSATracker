@@ -186,7 +186,7 @@ export function AuthForm({
                     <Typography variant={"caption"} color={"textDisabled"} textAlign={"end"}>
                         <MuiLink
                             component={RouterLink}
-                            to={"/reset-password"}
+                            to={"/forgot-password"}
                             underline="none"
                             sx={{
                                 color: "secondary.main",
