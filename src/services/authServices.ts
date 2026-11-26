@@ -1,5 +1,4 @@
 import {supabase} from "../lib/supabaseClient.ts";
-import {frontendUrl} from "../utils/utils.ts";
 
 export async function logInWithEmail(email: string, password: string) {
     const {data, error} = await supabase.auth.signInWithPassword({
@@ -17,7 +16,7 @@ export async function signUpNewUser(email: string, password: string, firstName: 
         email: email,
         password: password,
         options: {
-            emailRedirectTo: `${frontendUrl}/home`,
+            emailRedirectTo: `${window.location.origin}/home`,
             data: {
                 username: userName,
                 email: email,
@@ -39,7 +38,7 @@ export async function logOut() {
 
 export async function resetPassword(email: string) {
     const {data, error} = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${frontendUrl}/reset-password`,
+        redirectTo: `${window.location.origin}/reset-password`,
     });
     if (error) throw error;
     return {data};
