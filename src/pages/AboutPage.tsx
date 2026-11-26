@@ -2,7 +2,7 @@ import {Box, Button, Divider, Link as MuiLink, Stack, Typography} from "@mui/mat
 import {Link as RouterLink} from "react-router"
 import {ImageBanner} from "../components/ImageBanner.tsx";
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
-import {GITHUB_URL, LINKEDIN_URL, PAYPAL_DONATE_LINK} from "../utils/utils.ts";
+import {BUYMEACOFFEE_LINK, GITHUB_URL, LINKEDIN_URL, PAYPAL_DONATE_LINK} from "../utils/utils.ts";
 
 export function AboutPage() {
     return (
@@ -252,26 +252,48 @@ export function AboutPage() {
                     appreciated.
                 </Typography>
 
-                <Button
-                    component="a"
-                    href={PAYPAL_DONATE_LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="outlined"
-                    startIcon={<Box component="img" src="/paypalLogo.png" alt="paypal logo"
-                                    sx={{width: 20, height: 20}}/>}
-                    sx={{
-                        px: 3,
-                        py: 1,
-                        borderRadius: 3,
-                        borderColor: "divider",
-                        "&:hover": {
-                            bgcolor: "action.selected",
-                        },
-                    }}
-                >
-                    Donate with PayPal
-                </Button>
+                <Stack direction={{xs: "column", sm: "row"}} spacing={2}>
+                    <Button
+                        component="a"
+                        href={BUYMEACOFFEE_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="outlined"
+                        startIcon={<Box component="img" src="/buymeacoffee.svg" alt="buy me a coffee logo"
+                                        sx={{width: 15}}/>}
+                        sx={{
+                            px: 3,
+                            py: 1,
+                            borderRadius: 3,
+                            borderColor: "divider",
+                            "&:hover": {
+                                bgcolor: "action.selected",
+                            },
+                        }}
+                    >
+                        Buy Me A Coffee
+                    </Button>
+                    <Button
+                        component="a"
+                        href={PAYPAL_DONATE_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="outlined"
+                        startIcon={<Box component="img" src="/paypalLogo.png" alt="paypal logo"
+                                        sx={{width: 20}}/>}
+                        sx={{
+                            px: 3,
+                            py: 1,
+                            borderRadius: 3,
+                            borderColor: "divider",
+                            "&:hover": {
+                                bgcolor: "action.selected",
+                            },
+                        }}
+                    >
+                        Donate with PayPal
+                    </Button>
+                </Stack>
             </Stack>
 
             <Divider/>
