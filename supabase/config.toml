@@ -258,7 +258,7 @@ content_path = "./supabase/templates/emailConfirmation.html"
 
 [auth.email.template.recovery]
 subject = "Reset your password - MSATracker"
-content_path = "./supabase/templates/emailConfirmation.html"
+content_path = "./supabase/templates/forgotPassword.html"
 
 # Uncomment to customize notification email template
 # [auth.email.notification.password_changed]

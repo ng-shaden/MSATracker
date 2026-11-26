@@ -2,7 +2,7 @@ import {supabase} from "../lib/supabaseClient.ts";
 import {frontendUrl} from "../utils/utils.ts";
 
 export async function logInWithEmail(email: string, password: string) {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const {data, error} = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
     });
@@ -13,7 +13,7 @@ export async function logInWithEmail(email: string, password: string) {
 }
 
 export async function signUpNewUser(email: string, password: string, firstName: string, lastName: string, userName: string) {
-    const { data, error } = await supabase.auth.signUp({
+    const {data, error} = await supabase.auth.signUp({
         email: email,
         password: password,
         options: {
@@ -38,8 +38,16 @@ export async function logOut() {
 }
 
 export async function resetPassword(email: string) {
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    const {data, error} = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: `${frontendUrl}/reset-password`,
+    });
+    if (error) throw error;
+    return {data};
+}
+
+export async function updatePassword(newPassword: string) {
+    const {data, error} = await supabase.auth.updateUser({
+        password: newPassword,
     });
     if (error) throw error;
     return {data};

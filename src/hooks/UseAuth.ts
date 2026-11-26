@@ -1,5 +1,5 @@
 import {useMutation} from "@tanstack/react-query";
-import {logInWithEmail, logOut, resetPassword, signUpNewUser} from "../services/authServices.ts";
+import {logInWithEmail, logOut, resetPassword, signUpNewUser, updatePassword} from "../services/authServices.ts";
 import {isUsernameTaken} from "../services/userServices.ts";
 
 export function useLogIn() {
@@ -59,6 +59,18 @@ export function useResetPassword() {
     return {
         resetPassword: mutate,
         isResettingPassword,
+        error,
+    };
+}
+
+export function useUpdatePassword() {
+    const {mutateAsync, isPending: isUpdatingPassword, error} = useMutation({
+        mutationFn: (newPassword: string) => updatePassword(newPassword),
+    });
+
+    return {
+        updatePassword: mutateAsync,
+        isUpdatingPassword,
         error,
     };
 }

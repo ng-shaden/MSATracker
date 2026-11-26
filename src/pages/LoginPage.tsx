@@ -21,6 +21,10 @@ export function LoginPage() {
         location.state?.forgotPasswordSuccess === true
     );
 
+    const [showResetPasswordSuccess, setShowResetPasswordSuccess] = useState(
+        location.state?.passwordResetSuccess === true
+    );
+
     const isBanned = (error as AuthError | null)?.code === "user_banned";
 
     const errorMessage = isBanned ? "This account has been deleted. Please contact support." : error?.message;
@@ -51,46 +55,7 @@ export function LoginPage() {
                 footerLinkText="Sign up"
                 footerLinkTo="/signup"
             />
-            {/*<Snackbar*/}
-            {/*    open={showSignupSuccess}*/}
-            {/*    autoHideDuration={6000}*/}
-            {/*    onClose={() => setShowSignupSuccess(false)}*/}
-            {/*    anchorOrigin={{vertical: "top", horizontal: "right"}}*/}
-            {/*    slots={{transition: SlideTransition}}*/}
-            {/*    sx={{*/}
-            {/*        mt: 2,*/}
-            {/*        mr: {xs: 0, md: 2},*/}
-            {/*        "& .MuiSnackbarContent-root": {*/}
-            {/*            borderRadius: 3,*/}
-            {/*        },*/}
-            {/*    }}*/}
-            {/*>*/}
-            {/*    <Alert*/}
-            {/*        icon={<CheckIcon fontSize={"large"}/>}*/}
-            {/*        severity="success"*/}
-            {/*        variant="outlined"*/}
-            {/*        onClose={() => setShowSignupSuccess(false)}*/}
-            {/*        sx={{*/}
-            {/*            borderRadius: 2,*/}
-            {/*            border: "2px solid",*/}
-            {/*            borderColor: "success.dark",*/}
-            {/*            bgcolor: "background.paper",*/}
-            {/*            color: "success.main",*/}
-            {/*            "& .MuiAlert-icon": {*/}
-            {/*                alignItems: "center",*/}
-            {/*            },*/}
-            {/*            "& .MuiAlert-message": {*/}
-            {/*                py: 0.5,*/}
-            {/*            }*/}
-            {/*        }}*/}
-            {/*    >*/}
-            {/*        <Typography variant={"subtitle1"} lineHeight={{xs: 1.1, sm: "auto"}} mb={{xs: 1, sm: 0.5}}*/}
-            {/*                    fontWeight={600}>Account created successfully!</Typography>*/}
-            {/*        <Typography variant="body2" color="text.secondary" lineHeight={{xs: "auto", sm: 1.1}}>*/}
-            {/*            Check your inbox to confirm your email address.*/}
-            {/*        </Typography>*/}
-            {/*    </Alert>*/}
-            {/*</Snackbar>*/}
+
             <NotificationPopUp
                 open={showSignupSuccess}
                 onClose={() => setShowSignupSuccess(false)}
@@ -103,6 +68,13 @@ export function LoginPage() {
                 onClose={() => setForgotPasswordSuccess(false)}
                 title="Password reset email sent!"
                 subtitle={"Check your inbox to reset your password."}
+            />
+
+            <NotificationPopUp
+                open={showResetPasswordSuccess}
+                onClose={() => setShowResetPasswordSuccess(false)}
+                title="Your password has been updated!"
+                subtitle="Please log in with your new password."
             />
         </AuthLayout>
     );
