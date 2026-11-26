@@ -12,12 +12,12 @@ import {
 } from "@mui/material";
 import {ProfileAvatar} from "./ProfileAvatar.tsx";
 import {StatDisplay} from "./StatDisplay.tsx";
-import {UserAuth} from "../context/AuthContextProvider.tsx";
+import {UserAuth} from "../../context/AuthContextProvider.tsx";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import {useChangeProfilePicture} from "../hooks/UseProfilePicture.ts";
+import {useChangeProfilePicture} from "../../hooks/UseProfilePicture.ts";
 import {type ChangeEvent, useRef} from "react";
-import {MIME_EXTENSIONS} from "../utils/pictureUitls.ts";
-import {useUserMediaList} from "../hooks/UseUserMedia.ts";
+import {MIME_EXTENSIONS} from "../../utils/pictureUitls.ts";
+import {useUserMediaList} from "../../hooks/UseUserMedia.ts";
 import {ProfileOptionsMenu} from "./ProfileOptionsMenu.tsx";
 
 

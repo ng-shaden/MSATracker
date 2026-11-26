@@ -25,6 +25,7 @@ import {TermsAndConditionsPage} from "./pages/TermsAndConditionsPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import {ForgotPasswordPage} from "./pages/ForgotPasswordPage.tsx";
 import {ResetPasswordPage} from "./pages/ResetPasswordPage.tsx";
+import {ScrollToTopLayout} from "./layouts/ScrollToTopLayout.tsx";
 
 const queryClient = new QueryClient()
 
@@ -56,12 +57,15 @@ function AppContent() {
                     <Route path="/signup" element={<SignUpPage/>}/>
                     <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>
                     <Route path="/reset-password" element={<ResetPasswordPage/>}/>
-                    <Route path="/about" element={<AboutPage/>}/>
-                    <Route path="/privacy-policy" element={<PrivacyPolicyPage/>}/>
-                    <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
-                    <Route path="/contact" element={<ContactPage/>}/>
-                    <Route path="/terms-and-conditions" element={<TermsAndConditionsPage/>}/>
-                    <Route path="*" element={<NotFoundPage/>}/>
+
+                    <Route element={<ScrollToTopLayout/>}>
+                        <Route path="/about" element={<AboutPage/>}/>
+                        <Route path="/privacy-policy" element={<PrivacyPolicyPage/>}/>
+                        <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
+                        <Route path="/contact" element={<ContactPage/>}/>
+                        <Route path="/terms-and-conditions" element={<TermsAndConditionsPage/>}/>
+                        <Route path="*" element={<NotFoundPage/>}/>
+                    </Route>
                 </Route>
 
                 {/* Authenticated pages */}

@@ -11,6 +11,6 @@ export const NO_POSTER_URL = "https://upload.wikimedia.org/wikipedia/commons/6/6
 export const CONTACT_EMAIL = "ng.shaden@gmail.com";
 export const OPERATOR_NAME = "Shaden Ng";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/mark-ng-03980b1b1";
-export const GITHUB_URL = "https://github.com/yvon-ng";
+export const GITHUB_URL = "https://github.com/ng-shaden";
 export const PAYPAL_DONATE_LINK = "https://www.paypal.com/donate/?hosted_button_id=AGGXQQ7QU9HPY";
 export const frontendUrl = import.meta.env.VITE_FRONTEND_URL

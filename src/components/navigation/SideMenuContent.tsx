@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import type {JSX} from "react";
 import {useLocation, useNavigate} from "react-router";
 import {UserAuth} from "../../context/AuthContextProvider.tsx";
-import {ProfileAvatar} from "../ProfileAvatar.tsx";
+import {ProfileAvatar} from "../profile/ProfileAvatar.tsx";
 import {usePersonalPreferences} from "../../hooks/UsePersonalPreferences.ts";
 
 interface SideMenuContentProps {

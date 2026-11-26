@@ -10,12 +10,12 @@ import {
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import {useLogOut} from "../hooks/UseAuth.ts";
+import {useLogOut} from "../../hooks/UseAuth.ts";
 import DeleteIcon from '@mui/icons-material/Delete';
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import {useDeleteUser, useExportUserData} from "../hooks/UseUser.ts";
+import {useDeleteUser, useExportUserData} from "../../hooks/UseUser.ts";
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import {BaseDialog} from "./BaseDialog.tsx";
+import {BaseDialog} from "../BaseDialog.tsx";
 
 export function ProfileOptionsMenu() {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

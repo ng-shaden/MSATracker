@@ -1,6 +1,6 @@
 import {Avatar, type SxProps, type Theme} from "@mui/material";
-import {useProfilePicture} from "../hooks/UseProfilePicture.ts";
-import {UserAuth} from "../context/AuthContextProvider.tsx";
+import {useProfilePicture} from "../../hooks/UseProfilePicture.ts";
+import {UserAuth} from "../../context/AuthContextProvider.tsx";
 import PersonIcon from "@mui/icons-material/Person";
 
 interface ProfileAvatarProps {
