@@ -27,3 +27,4 @@ dist-ssr
 /supabase/.temp/
 /TODO.md
 /supabase/seed.sql
+/supabase/functions/.env
