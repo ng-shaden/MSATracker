@@ -14,7 +14,7 @@ export function PrivacyPolicyPage() {
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">
-                    Last updated: 14 November 2026
+                    Last updated: 26 November 2026
                 </Typography>
 
                 <Typography variant="body1" color="text.secondary" maxWidth={850}>
@@ -109,10 +109,9 @@ export function PrivacyPolicyPage() {
                         1.3 Technical Information
                     </Typography>
 
-                    {/*TODO add hosting service*/}
                     <Typography variant="body1" color="text.secondary">
                         When you access MSATracker, we and our service providers
-                        (including Supabase and our hosting provider) automatically
+                        (including Supabase and Vercel) automatically
                         process certain technical information, such as:
                     </Typography>
 
@@ -283,7 +282,40 @@ export function PrivacyPolicyPage() {
                     </MuiLink>
 
                     <Typography variant="subtitle1" fontWeight={600}>
-                        3.2 The Movie Database (TMDB)
+                        3.2 Vercel
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        MSATracker uses Vercel as its hosting and deployment provider
+                        to deliver the application to users.
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        When you access MSATracker, Vercel may process technical
+                        information such as your IP address, browser and device
+                        information, request details, timestamps, and server logs.
+                        This information is used to deliver, maintain, monitor,
+                        and secure the application.
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        Vercel processes personal information on our behalf
+                        in accordance with its Data Processing Addendum.
+                    </Typography>
+
+                    <MuiLink
+                        href="https://vercel.com/legal/privacy-notice"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="secondary"
+                        underline="hover"
+                        sx={{alignSelf: "flex-start"}}
+                    >
+                        Vercel Privacy Notice
+                    </MuiLink>
+
+                    <Typography variant="subtitle1" fontWeight={600}>
+                        3.3 The Movie Database (TMDB)
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
@@ -319,7 +351,32 @@ export function PrivacyPolicyPage() {
                     </MuiLink>
 
                     <Typography variant="subtitle1" fontWeight={600}>
-                        3.3 PayPal (Voluntary Donations)
+                        3.4 Buy Me a Coffee (Voluntary Donations)
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        MSATracker may offer an optional donation link that redirects
+                        you to Buy Me a Coffee. Donations are processed by Buy Me a
+                        Coffee and its payment providers under their respective terms
+                        and privacy policies. We do not collect or store your payment
+                        details. Depending on the information you provide, we may
+                        receive limited donation details, such as your name and
+                        donation amount.
+                    </Typography>
+
+                    <MuiLink
+                        href="https://www.buymeacoffee.com/privacy-policy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="secondary"
+                        underline="hover"
+                        sx={{alignSelf: "flex-start"}}
+                    >
+                        Buy Me a Coffee Privacy Policy
+                    </MuiLink>
+
+                    <Typography variant="subtitle1" fontWeight={600}>
+                        3.5 PayPal (Voluntary Donations)
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">

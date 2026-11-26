@@ -14,14 +14,15 @@ export function TermsAndConditionsPage() {
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">
-                    Last updated: 14 November 2026
+                    Last updated: 26 November 2026
                 </Typography>
 
                 <Typography variant="body1" color="text.secondary" maxWidth={850}>
                     Welcome to MSATracker ("we", "us" or "our").
                     These Terms & Conditions govern
                     your access to and use of MSATracker, including its
-                    website, features and associated functionality (the "Service"). By creating an account or using the Service, you
+                    website, features and associated functionality (the "Service"). By creating an account or using the
+                    Service, you
                     agree
                     to these Terms & Conditions. If you do not agree with
                     them, you should not use the Service.
@@ -239,10 +240,13 @@ export function TermsAndConditionsPage() {
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">
-                        Donations are processed by PayPal under its own terms and privacy
-                        policy. Except where required by applicable law, donations are
+                        Donations are made through third-party platforms, such as
+                        PayPal and Buy Me a Coffee, and are subject to their
+                        respective terms and conditions and privacy policies.
+                        Except where required by applicable law, donations are
                         non-refundable.
                     </Typography>
+
                 </Stack>
 
                 <Stack spacing={2}>
