@@ -259,7 +259,7 @@ export function AboutPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         variant="outlined"
-                        startIcon={<Box component="img" src="/buymeacoffee.svg" alt="buy me a coffee logo"
+                        startIcon={<Box component="img" src="/buymeacoffeeLogo.svg" alt="buy me a coffee logo"
                                         sx={{width: 15}}/>}
                         sx={{
                             px: 3,
