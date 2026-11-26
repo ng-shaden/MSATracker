@@ -6,7 +6,6 @@ import {
 } from "@mui/material";
 import type {TMDBMedia} from "../../model/TMDBMedia.ts";
 import {IMAGE_BASE_URL} from "../../services/tmdbServices.ts";
-import {useNavigate} from "react-router";
 import type {UserMediaStatus} from "../../model/UserMedia.ts";
 import {MediaStatusMenu} from "./MediaStatusMenu.tsx";
 import {NO_POSTER_URL} from "../../utils/utils.ts";
@@ -14,6 +13,7 @@ import {memo} from "react";
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
 import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
 import {usePersonalPreferences} from "../../hooks/UsePersonalPreferences.ts";
+import {Link as RouterLink} from "react-router";
 
 interface MediaCardProps {
     media: TMDBMedia
@@ -21,7 +21,6 @@ interface MediaCardProps {
 }
 
 export const MediaCard = memo(function MediaCard({media, userMediaStatus}: MediaCardProps) {
-    const navigate = useNavigate();
     const isMovie = media.media_type === "movie";
     const title = isMovie ? media.title : media.name;
     const releaseDate = isMovie ? media.release_date : media.first_air_date;
@@ -39,8 +38,7 @@ export const MediaCard = memo(function MediaCard({media, userMediaStatus}: Media
                 borderRadius: 3,
             }}
         >
-            <CardActionArea
-                onClick={() => navigate(`/${isMovie ? "movie" : "series"}/${media.id}`)}>
+            <CardActionArea component={RouterLink} to={`/${isMovie ? "movie" : "series"}/${media.id}`}>
                 <CardMedia
                     loading={"lazy"}
                     decoding={"async"}
