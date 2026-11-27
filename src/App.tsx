@@ -47,10 +47,9 @@ function App() {
 }
 
 function AppContent() {
-
     return (
-        <>
-            <Routes>
+        <Routes>
+            <Route element={<ScrollToTopLayout/>}>
                 {/* Public pages */}
                 <Route element={<PublicLayout/>}>
                     <Route path="/login" element={<LoginPage/>}/>
@@ -58,14 +57,12 @@ function AppContent() {
                     <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>
                     <Route path="/reset-password" element={<ResetPasswordPage/>}/>
 
-                    <Route element={<ScrollToTopLayout/>}>
-                        <Route path="/about" element={<AboutPage/>}/>
-                        <Route path="/privacy-policy" element={<PrivacyPolicyPage/>}/>
-                        <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
-                        <Route path="/contact" element={<ContactPage/>}/>
-                        <Route path="/terms-and-conditions" element={<TermsAndConditionsPage/>}/>
-                        <Route path="*" element={<NotFoundPage/>}/>
-                    </Route>
+                    <Route path="/about" element={<AboutPage/>}/>
+                    <Route path="/privacy-policy" element={<PrivacyPolicyPage/>}/>
+                    <Route path="/cookie-policy" element={<CookiePolicyPage/>}/>
+                    <Route path="/contact" element={<ContactPage/>}/>
+                    <Route path="/terms-and-conditions" element={<TermsAndConditionsPage/>}/>
+                    <Route path="*" element={<NotFoundPage/>}/>
                 </Route>
 
                 {/* Authenticated pages */}
@@ -83,8 +80,8 @@ function AppContent() {
                 </Route>
 
                 <Route path="/" element={<Navigate to="/home" replace/>}/>
-            </Routes>
-        </>
+            </Route>
+        </Routes>
     );
 }
 
