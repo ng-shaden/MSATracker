@@ -8,18 +8,34 @@ interface UserContextProviderProps {
     children: ReactNode;
 }
 
+const PASSWORD_RECOVERY_KEY = "password-recovery";
+
 export const AuthContextProvider = ({children,}: UserContextProviderProps) => {
     const [supabaseUser, setSupabaseUser] = useState<SupabaseUser | undefined>(undefined);
     const [user, setUser] = useState<User | undefined>(undefined);
     const [sessionLoading, setSessionLoading] = useState(true);
     const [profileLoading, setProfileLoading] = useState(true);
 
+    const [isPasswordRecovery, setIsPasswordRecovery] = useState(
+        () => sessionStorage.getItem(PASSWORD_RECOVERY_KEY) === "true"
+    );
+
     // Restore the session and listen for authentication changes.
     useEffect(() => {
         let isMounted = true;
 
-        const {data: {subscription}} = supabase.auth.onAuthStateChange((_event, session) => {
+        const {data: {subscription}} = supabase.auth.onAuthStateChange((event, session) => {
             if (!isMounted) return;
+
+            if (event === "PASSWORD_RECOVERY") {
+                sessionStorage.setItem(PASSWORD_RECOVERY_KEY, "true");
+                setIsPasswordRecovery(true);
+            }
+
+            if (event === "SIGNED_OUT") {
+                sessionStorage.removeItem(PASSWORD_RECOVERY_KEY);
+                setIsPasswordRecovery(false);
+            }
 
             setSupabaseUser((prev) =>
                 prev?.id === session?.user?.id ? prev : session?.user
@@ -32,8 +48,15 @@ export const AuthContextProvider = ({children,}: UserContextProviderProps) => {
             if (error) {
                 console.error("Failed to restore session:", error.message);
                 setSupabaseUser(undefined);
+                sessionStorage.removeItem(PASSWORD_RECOVERY_KEY);
+                setIsPasswordRecovery(false);
             } else {
                 setSupabaseUser(data.session?.user);
+
+                if (!data.session) {
+                    sessionStorage.removeItem(PASSWORD_RECOVERY_KEY);
+                    setIsPasswordRecovery(false);
+                }
             }
 
             setSessionLoading(false);
@@ -115,7 +138,7 @@ export const AuthContextProvider = ({children,}: UserContextProviderProps) => {
     const loading = sessionLoading || profileLoading;
 
     return (
-        <AuthContext.Provider value={{supabaseUser, loading, user, setUser}}>
+        <AuthContext.Provider value={{supabaseUser, loading, user, setUser, isPasswordRecovery}}>
             {children}
         </AuthContext.Provider>
     );

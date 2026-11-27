@@ -1,8 +1,9 @@
 import {AuthLayout} from "../components/auth/AuthLayout.tsx";
 import {useState, type SubmitEvent} from "react";
 import {Alert, Box, Button, Divider, Link as MuiLink, Stack, TextField, Typography} from "@mui/material";
-import {Link as RouterLink, useNavigate} from "react-router";
+import {Navigate, useNavigate} from "react-router";
 import {useLogOut, useUpdatePassword} from "../hooks/UseAuth.ts";
+import {UserAuth} from "../context/AuthContextProvider.tsx";
 
 export function ResetPasswordPage() {
     const [password, setPassword] = useState("");
@@ -10,8 +11,16 @@ export function ResetPasswordPage() {
     const {updatePassword, isUpdatingPassword, error} = useUpdatePassword();
     const navigate = useNavigate();
     const {logout, isLoggingOut} = useLogOut();
+    const {isPasswordRecovery, loading} = UserAuth();
 
-    // TODO secure (should check if user has authentication token page should be accessable to public users
+    // REQUIRED so that passwordResetSuccess gets passed on LoginPage as true and shows snackbar
+    // (without: after successful updatePassword page rerenders and uses navigate to login from check below not the one in onSubmit
+    const [isLeavingRecovery, setIsLeavingRecovery] = useState(false);
+
+    // REQUIRED to check since at loading isPasswordRecovery is false because PASSWORD_RECOVERY_KEY is undefined and causes the user to navigate to login as per next check
+    if (loading) return null;
+    if (!isPasswordRecovery && !isLeavingRecovery) return <Navigate to="/login" replace/>;
+
     async function onSubmit(e: SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
 
@@ -19,10 +28,21 @@ export function ResetPasswordPage() {
 
         try {
             await updatePassword(password);
+            setIsLeavingRecovery(true);
             await logout();
-            navigate("/login", {replace: true, state: { passwordResetSuccess: true },});
+            navigate("/login", {replace: true, state: {passwordResetSuccess: true}});
         } catch {
-            // Errors are exposed through the mutation states.
+            setIsLeavingRecovery(false);
+        }
+    }
+
+    async function handleBackToLogin() {
+        try {
+            setIsLeavingRecovery(true);
+            await logout();
+            navigate("/login", {replace: true});
+        } catch {
+            setIsLeavingRecovery(false);
         }
     }
 
@@ -88,18 +108,16 @@ export function ResetPasswordPage() {
                     </Button>
                 </Stack>
                 <Divider/>
-                <Typography variant="body2" textAlign="center" color={"textSecondary"}
-                            sx={{letterSpacing: '0.1em'}}>
+                <Typography variant="body2" textAlign="center" color={"textSecondary"} sx={{letterSpacing: '0.1em'}}>
                     Remembered your password? {" "}
                     <MuiLink
-                        component={RouterLink}
-                        to={"/login"}
-                        underline="none"
+                        component="button"
+                        type="button"
+                        onClick={handleBackToLogin}
+                        underline="hover"
                         sx={{
+                            all: "unset",
                             color: "secondary.main",
-                            "&:hover": {
-                                textDecoration: "underline",
-                            },
                         }}
                     >
                         Log in

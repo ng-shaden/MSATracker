@@ -13,7 +13,7 @@ export function CookiePolicyPage() {
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">
-                    Last updated: 4 November 2026
+                    Last updated: 27 November 2026
                 </Typography>
 
                 <Typography variant="body1" color="text.secondary" maxWidth={850}>
@@ -56,8 +56,15 @@ export function CookiePolicyPage() {
                     <Typography variant="body1" color="text.secondary">
                         MSATracker does not intentionally use browser cookies
                         for its own advertising or analytics purposes.
-                        However, the application uses browser storage to support
-                        its core functionality.
+                        However, it uses browser storage technologies to
+                        support its core functionality.
+                    </Typography>
+
+                    <Typography variant="body1" color="text.secondary">
+                        MSATracker uses browser session storage to temporarily maintain
+                        information during authentication processes, such as password
+                        recovery. This information is stored for the duration of the
+                        browser tab's session and is removed when it is no longer needed.
                     </Typography>
 
                     <Typography variant="body1" color="text.secondary">

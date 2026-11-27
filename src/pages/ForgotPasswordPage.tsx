@@ -72,13 +72,8 @@ export function ForgotPasswordPage() {
                     <MuiLink
                         component={RouterLink}
                         to={"/login"}
-                        underline="none"
-                        sx={{
-                            color: "secondary.main",
-                            "&:hover": {
-                                textDecoration: "underline",
-                            },
-                        }}
+                        underline="hover"
+                        color="secondary"
                     >
                         Log in
                     </MuiLink>

@@ -157,13 +157,8 @@ export function AuthForm({
                             <MuiLink
                                 component={RouterLink}
                                 to={"/terms-and-conditions"}
-                                underline="none"
-                                sx={{
-                                    color: "secondary.main",
-                                    "&:hover": {
-                                        textDecoration: "underline",
-                                    },
-                                }}
+                                underline="hover"
+                                color={"secondary"}
                             >
                                 Terms & Conditions
                             </MuiLink>
@@ -187,13 +182,8 @@ export function AuthForm({
                         <MuiLink
                             component={RouterLink}
                             to={"/forgot-password"}
-                            underline="none"
-                            sx={{
-                                color: "secondary.main",
-                                "&:hover": {
-                                    textDecoration: "underline",
-                                },
-                            }}
+                            underline="hover"
+                            color={"secondary"}
                         >
                             Forgot password?
                         </MuiLink>
@@ -208,13 +198,8 @@ export function AuthForm({
                 <MuiLink
                     component={RouterLink}
                     to={footerLinkTo}
-                    underline="none"
-                    sx={{
-                        color: "secondary.main",
-                        "&:hover": {
-                            textDecoration: "underline",
-                        },
-                    }}
+                    underline="hover"
+                    color={"secondary"}
                 >
                     {footerLinkText}
                 </MuiLink>

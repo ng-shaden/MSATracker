@@ -3,7 +3,7 @@ import {UserAuth} from "../../context/AuthContextProvider.tsx";
 import {Box, CircularProgress} from "@mui/material";
 
 export default function ProtectedRoute() {
-    const {user, supabaseUser, loading} = UserAuth();
+    const {user, supabaseUser, loading, isPasswordRecovery} = UserAuth();
     const location = useLocation();
 
     if (loading) {
@@ -17,6 +17,10 @@ export default function ProtectedRoute() {
                 <CircularProgress/>
             </Box>
         );
+    }
+
+    if (isPasswordRecovery) {
+        return <Navigate to="/reset-password" replace/>;
     }
 
     if (!supabaseUser || !user) {

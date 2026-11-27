@@ -329,13 +329,8 @@ export function AboutPage() {
                         <MuiLink
                             component={RouterLink}
                             to={"/home"}
-                            underline="none"
-                            sx={{
-                                color: "secondary.main",
-                                "&:hover": {
-                                    textDecoration: "underline",
-                                },
-                            }}
+                            underline="hover"
+                            color="secondary"
                         >
                             Log in
                         </MuiLink>

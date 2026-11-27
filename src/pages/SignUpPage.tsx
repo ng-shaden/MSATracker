@@ -56,7 +56,7 @@ export function SignUpPage() {
                 error={formError}
                 usernameError={usernameError}
                 footerText="Already have an account?"
-                footerLinkText="Login"
+                footerLinkText="Log in"
                 footerLinkTo="/login"
                 showSignUpFields
                 userName={userName}

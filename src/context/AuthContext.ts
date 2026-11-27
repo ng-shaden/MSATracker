@@ -7,6 +7,7 @@ export interface AuthContextType {
     loading: boolean;
     user: User | undefined
     setUser: (user: User) => void;
+    isPasswordRecovery: boolean;
 }
 
 export const AuthContext = createContext<AuthContextType>({
@@ -14,4 +15,5 @@ export const AuthContext = createContext<AuthContextType>({
     loading: true,
     user: undefined,
     setUser: () => {},
+    isPasswordRecovery: false,
 })

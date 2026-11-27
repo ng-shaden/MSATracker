@@ -10,7 +10,7 @@ export default function PublicLayout() {
 
     return (
         <Box position={"relative"}>
-            <Box position="fixed" top={20} left={{xs: 20, sm: 50}} zIndex={10}> {/*TODO top={} initially was 30 but on iphone topbar/logo was covering login text need to visually test*/}
+            <Box position="fixed" top={20} left={{xs: 20, sm: 50}} zIndex={10}>
                 <Stack direction={"row"} alignItems={"center"} spacing={1} onClick={handleLogoClick}
                        sx={{cursor: "pointer"}}>
                     <Box
